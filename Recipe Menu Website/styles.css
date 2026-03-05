@@ -42,3 +42,8 @@ ul {
     border-radius: 10px;
     border: 2px solid rgb(75, 75, 75);
 }
+
+.recipe-container {
+    clear: both; 
+    padding-top: 20px;
+}
