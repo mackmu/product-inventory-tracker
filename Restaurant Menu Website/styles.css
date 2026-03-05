@@ -1,0 +1,44 @@
+html {
+    font-family: sans-serif;
+}
+body {
+    width: 1080px;
+    background-color: rgb(44, 44, 44);
+    margin: 0px auto;
+    color: rgb(200, 201, 201);
+}
+h1 {
+    text-shadow: -1px 3px 7px rgb(24, 24, 24);
+    font-size: 3em;
+}
+img {
+    display: block;
+    float: left;
+    height: 250px;
+    width: 220px;
+    border: 3px solid black;
+}
+p {
+    display: block;
+    float: right;
+    width: 800px;
+    height: 200px
+}
+h3,
+ul {
+    clear: both;
+    float: left;
+    display: block;
+}
+h3 {
+    margin: 10px 0px 5px 0px;
+}
+ul {
+    margin: 0px;
+    background-color: rgb(222, 255, 247);
+    color: rgb(72, 74, 73);
+    width: 40%;
+    padding: 10px 0px 10px 30px;
+    border-radius: 10px;
+    border: 2px solid rgb(75, 75, 75);
+}
