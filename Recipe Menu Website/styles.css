@@ -47,3 +47,14 @@ ul {
     clear: both; 
     padding-top: 20px;
 }
+/* Footer Styles */
+footer {
+    clear: both; /* Tells the footer to sit below the floating image/list */
+    text-align: center;
+    padding: 25px 15px;
+    width: 100%;
+    color: #4a4a4a;
+    font-size: 0.9rem;
+    margin-top: 700px; 
+    border-top: 1px solid #eaeaea;
+}
