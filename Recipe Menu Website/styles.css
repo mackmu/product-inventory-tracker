@@ -80,6 +80,32 @@ ul {
     cursor: pointer;
 }
 
+/* 1. Hide the standard browser checkbox */
+.fav-toggle {
+    display: none;
+}
+
+/* 2. Style the label to look like an unclicked button */
+.favorite-btn {
+    display: inline-block;
+    background-color: #f9f9f9;
+    color: #666;
+    border: 2px solid #ccc;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
+
+/* 3. The Visual Indicator: Change colors when selected! */
+.fav-toggle:checked + .favorite-btn {
+    background-color: #ffcccc;
+    color: #aa0000;
+    border-color: #aa0000;
+}
+
 /* Footer Styles */
 footer {
     clear: both; /* Tells the footer to sit below the floating image/list */
