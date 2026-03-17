@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\dylan\\source\\repos\\ProductInventoryTracker\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A173FBBB-D62B-473E-7FB0-E5540BCE12EF}|ProductInventoryTracker\\ProductInventoryTracker.csproj|c:\\users\\dylan\\source\\repos\\productinventorytracker\\productinventorytracker\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A173FBBB-D62B-473E-7FB0-E5540BCE12EF}|ProductInventoryTracker\\ProductInventoryTracker.csproj|solutionrelative:productinventorytracker\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A173FBBB-D62B-473E-7FB0-E5540BCE12EF}|ProductInventoryTracker\\ProductInventoryTracker.csproj|c:\\users\\dylan\\source\\repos\\productinventorytracker\\productinventorytracker\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A173FBBB-D62B-473E-7FB0-E5540BCE12EF}|ProductInventoryTracker\\ProductInventoryTracker.csproj|solutionrelative:productinventorytracker\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,31 +31,43 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\ProductInventoryTracker\\ProductInventoryTracker\\Category.cs",
+              "RelativeDocumentMoniker": "ProductInventoryTracker\\Category.cs",
+              "ToolTip": "C:\\Users\\dylan\\source\\repos\\ProductInventoryTracker\\ProductInventoryTracker\\Category.cs*",
+              "RelativeToolTip": "ProductInventoryTracker\\Category.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T18:51:49.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\ProductInventoryTracker\\ProductInventoryTracker\\Product.cs",
               "RelativeDocumentMoniker": "ProductInventoryTracker\\Product.cs",
               "ToolTip": "C:\\Users\\dylan\\source\\repos\\ProductInventoryTracker\\ProductInventoryTracker\\Product.cs*",
               "RelativeToolTip": "ProductInventoryTracker\\Product.cs*",
-              "ViewState": "AgIAAAQAAAAAnJmZmZkuwB8AAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAaGZmZmYpwCgAAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-17T18:19:10.803Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\ProductInventoryTracker\\ProductInventoryTracker\\MainWindow.xaml",
               "RelativeDocumentMoniker": "ProductInventoryTracker\\MainWindow.xaml",
               "ToolTip": "C:\\Users\\dylan\\source\\repos\\ProductInventoryTracker\\ProductInventoryTracker\\MainWindow.xaml",
               "RelativeToolTip": "ProductInventoryTracker\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-12T15:28:33.485Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-12T15:28:33.485Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\ProductInventoryTracker\\ProductInventoryTracker\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "ProductInventoryTracker\\MainWindow.xaml.cs",

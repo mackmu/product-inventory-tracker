@@ -27,7 +27,12 @@ namespace ProductInventoryTracker
         /// <summary>
         /// Price of the product.
         /// </summary>
-        private double price;
+        private decimal price;
+
+        /// <summary>
+        /// ID of the category to which the product belongs.
+        /// </summary>
+        private int categoryID;
 
         /// <summary>
         /// Initializes a new instance of the Product class.
@@ -36,12 +41,14 @@ namespace ProductInventoryTracker
         /// <param name="productName">The name of the product. Cannot be null or empty.</param>
         /// <param name="price">The price of the product. Must be greater than or equal to zero.</param>
         /// <param name="quantity">The quantity of the product in stock. Must be zero or a positive integer.</param>
-        public Product(int productID, string productName, double price, int quantity)
+        /// <param name="categoryID">The identifier for the category to which the product belongs. Must be a positive integer.</param>
+        public Product(int productID, string productName, decimal price, int quantity, int categoryID)
         {
             this.productID = productID;
             this.productName = productName;
             this.price = price;
             this.quantity = quantity;
+            this.categoryID = categoryID;
         }
     }
 }
