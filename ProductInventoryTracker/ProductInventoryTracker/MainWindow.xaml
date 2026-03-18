@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Button x:Name="btnProducts" Content="Manage Products" HorizontalAlignment="Left" Margin="78,170,0,0" VerticalAlignment="Top" Width="120" Click="btnProducts_Click"/>
 
+        <Button x:Name="btnCategories" Content="Manage Categories" HorizontalAlignment="Left" Margin="235,170,0,0" VerticalAlignment="Top" Width="120" Click="btnCategories_Click"/>
+
+        <Button x:Name="btnSuppliers" Content="Manage Suppliers" HorizontalAlignment="Left" Margin="388,170,0,0" VerticalAlignment="Top" Width="120" Click="btnSuppliers_Click"/>
     </Grid>
 </Window>
