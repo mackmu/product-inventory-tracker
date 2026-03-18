@@ -35,6 +35,11 @@ namespace ProductInventoryTracker
         private int categoryID;
 
         /// <summary>
+        /// ID of the supplier that provides the product.
+        /// </summary>
+        private int supplierID;
+
+        /// <summary>
         /// Initializes a new instance of the Product class.
         /// </summary>
         /// <param name="productID">The unique identifier for the product. Must be a positive integer.</param>
