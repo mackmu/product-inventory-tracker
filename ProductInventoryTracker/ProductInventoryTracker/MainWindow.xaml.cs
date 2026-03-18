@@ -21,16 +21,33 @@ namespace ProductInventoryTracker
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Opens the Product window when the Products button is clicked.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event (the button).</param>
+        /// <param name="e">The event data.</param>
         private void btnProducts_Click(object sender, RoutedEventArgs e)
         {
+            ProductWindow pw = new ProductWindow();
 
+            pw.ShowDialog();
         }
 
+        /// <summary>
+        /// Opens the Category window when the Categories button is clicked.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event (the button).</param>
+        /// <param name="e">The event data.</param>
         private void btnCategories_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Opens the Supplier window when the Suppliers button is clicked.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event (the button).</param>
+        /// <param name="e">The event data.</param>
         private void btnSuppliers_Click(object sender, RoutedEventArgs e)
         {
 
