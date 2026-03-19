@@ -52,7 +52,9 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnSuppliers_Click(object sender, RoutedEventArgs e)
         {
-            
+            SupplierWindow sw = new SupplierWindow();
+
+            sw.ShowDialog();
         }
     }
 }
