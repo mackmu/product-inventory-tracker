@@ -40,7 +40,9 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnCategories_Click(object sender, RoutedEventArgs e)
         {
+            CategoryWindow cw = new CategoryWindow();
 
+            cw.ShowDialog();
         }
 
         /// <summary>
@@ -50,7 +52,7 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnSuppliers_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }
