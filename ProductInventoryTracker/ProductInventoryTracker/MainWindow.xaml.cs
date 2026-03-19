@@ -20,5 +20,20 @@ namespace ProductInventoryTracker
         {
             InitializeComponent();
         }
+
+        private void btnProducts_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCategories_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSuppliers_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
