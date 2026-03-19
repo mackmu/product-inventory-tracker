@@ -1,0 +1,16 @@
+﻿<Window x:Class="ProductInventoryTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProductInventoryTracker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnProducts" Content="Manage Products" HorizontalAlignment="Left" Margin="78,170,0,0" VerticalAlignment="Top" Width="120" Click="btnProducts_Click"/>
+
+        <Button x:Name="btnCategories" Content="Manage Categories" HorizontalAlignment="Left" Margin="235,170,0,0" VerticalAlignment="Top" Width="120" Click="btnCategories_Click"/>
+
+        <Button x:Name="btnSuppliers" Content="Manage Suppliers" HorizontalAlignment="Left" Margin="388,170,0,0" VerticalAlignment="Top" Width="120" Click="btnSuppliers_Click"/>
+    </Grid>
+</Window>
