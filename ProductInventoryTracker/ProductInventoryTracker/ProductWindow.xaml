@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ProductWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="112,58,0,0" TextWrapping="Wrap" Text="Product Entry" FontSize="17" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,58,0,0" TextWrapping="Wrap" Text="Add Product" FontSize="17" FontWeight="Bold" VerticalAlignment="Top"/>
         <Label Content="Product Name" HorizontalAlignment="Left" Margin="112,106,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Margin="203,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
         <Label Content="Price" HorizontalAlignment="Left" Margin="163,136,0,0" VerticalAlignment="Top"/>
