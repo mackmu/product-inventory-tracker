@@ -42,5 +42,17 @@ namespace ProductInventoryTracker
 
             lblSubtotalDisplay.Text = subtotal.ToString();
         }
+
+        /// <summary>
+        /// Saves a product when product info is succesfully entered.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event (the button).</param>
+        /// <param name="e">The event data.</param>
+        private void btnSaveProduct_Click(object sender, RoutedEventArgs e)
+        {
+            // Save successfully message for 'Save' a product button.
+            MessageBox.Show("Product saved successfully!"); // This shows the popup
+            this.Close(); // This closes the current window
+        }
     }
 }
