@@ -50,7 +50,7 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnSaveProduct_Click(object sender, RoutedEventArgs e)
         {
-            // Save successfully message for 'Save' a product button.
+            // Saved successfully message for 'Save' a product button.
             MessageBox.Show("Product saved successfully!"); // This shows the popup
             this.Close(); // This closes the current window
         }
