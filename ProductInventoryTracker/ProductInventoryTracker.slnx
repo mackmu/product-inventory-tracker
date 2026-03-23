@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="ProductInventoryTracker.Tests/ProductInventoryTracker.Tests.csproj" Id="830e71ff-7c9c-409d-a47f-c5a2119703c5" />
   <Project Path="ProductInventoryTracker/ProductInventoryTracker.csproj" />
 </Solution>
