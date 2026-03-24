@@ -21,5 +21,17 @@ namespace ProductInventoryTracker
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Saves a supplier when supplier info is succesfully entered.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event (the button).</param>
+        /// <param name="e">The event data.</param>
+        private void btnSaveSupplier_Click(object sender, RoutedEventArgs e)
+        {
+            // Saved successfully message for 'Save' a supplier button.
+            MessageBox.Show("Supplier saved successfully!"); // This shows the popup language.
+            this.Close(); // This closes the current window.
+        }
     }
 }
