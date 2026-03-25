@@ -1,7 +1,7 @@
 ﻿namespace ProductInventoryTracker.Tests
 {
     [TestClass]
-    public class ProductTests
+    public class ProductClassTests
     {
         [TestMethod]
         public void CalculateSubtotal()
@@ -10,5 +10,18 @@
 
             Assert.AreEqual(310.86m, p.Subtotal);
         }
+    }
+
+    [TestClass]
+    public class CategoryClassTests
+    {
+        [TestMethod]
+        public void GetName()
+        {
+            var c = new Category(32, "Hats");
+
+            Assert.AreEqual("Hats", c.GetCategoryName);
+        }
+
     }
 }

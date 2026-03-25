@@ -29,5 +29,7 @@ namespace ProductInventoryTracker
             this.categoryID = categoryID;
             this.categoryName = categoryName;
         }
+
+        public string GetCategoryName { get => this.categoryName; }
     }
 }
