@@ -56,5 +56,16 @@ namespace ProductInventoryTracker
             this.quantity = quantity;
             this.categoryID = categoryID;
         }
+
+        /// <summary>
+        /// Gets the subtotal calculation based on the product of price and quantity.
+        /// </summary>
+        public decimal Subtotal
+        {
+            get
+            {
+                return this.price * this.quantity;
+            }
+        }
     }
 }
