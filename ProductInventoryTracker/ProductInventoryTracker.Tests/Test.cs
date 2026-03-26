@@ -1,4 +1,5 @@
-﻿namespace ProductInventoryTracker.Tests
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace ProductInventoryTracker.Tests
 {
     [TestClass]
     public class ProductClassTests
@@ -23,5 +24,13 @@
             Assert.AreEqual("Cars", category.CategoryName);
         }
 
+        [TestMethod]
+        public void Invalid_Instantiation_ThrowsException()
+        {
+            Assert.Throws<Exception>(() =>
+            {
+                new Category { CategoryID = 123, CategoryName = 2 };
+            });
+        }
     }
 }
