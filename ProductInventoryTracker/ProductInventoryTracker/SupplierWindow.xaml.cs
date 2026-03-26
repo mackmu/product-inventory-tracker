@@ -29,9 +29,20 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnSaveSupplier_Click(object sender, RoutedEventArgs e)
         {
-            // Saved successfully message for 'Save' a supplier button.
-            MessageBox.Show("Supplier saved successfully!"); // This shows the popup language.
-            this.Close(); // This closes the current window.
+            // Temporary Supplier object.
+            Supplier tempSupplier = new Supplier(0, txtSupplierName.Text, txtSupplierEmail.Text);
+
+            if (tempSupplier.IsNameValid == true)
+            {
+                // Success Message
+                MessageBox.Show("Supplier saved successfully!");
+                this.Close();
+            }
+            else
+            {
+                // Failure Message
+                MessageBox.Show("Error: Supplier Name cannot be blank.");
+            }
         }
     }
 }

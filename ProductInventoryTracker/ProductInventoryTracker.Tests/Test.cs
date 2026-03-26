@@ -14,10 +14,13 @@
         [TestMethod]
         public void CalculateSubtotal_WithZero_ReturnsZero()
         {
+            // 1. Arrange
             var p = new Product(1, "Test", 0m, 10, 1);
 
+            // 2. Act
             decimal result = p.Subtotal;
 
+            // 3. Assert
             Assert.AreEqual(0m, result);
         }
     }
@@ -34,4 +37,23 @@
         }
 
     }
+
+    [TestClass]
+    public class SupplierClassTests
+    {
+        [TestMethod]
+        public void IsNameValid_EmptyName_ReturnsFalse()
+        {
+            // 1. Arrange
+            Supplier s = new Supplier(0, "", "test@email.com");
+
+            // 2. Act
+            bool result = s.IsNameValid;
+
+            // 3. Assert
+            Assert.IsFalse(result);
+        }
+    }
+
+
 }
