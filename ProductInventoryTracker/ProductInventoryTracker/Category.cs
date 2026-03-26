@@ -6,6 +6,8 @@ namespace ProductInventoryTracker
 {
     public class Category
     {
+        private string _categoryName;
+
         /// <summary>
         /// Gets or initializes the ID of the category.
         /// </summary>
@@ -14,6 +16,18 @@ namespace ProductInventoryTracker
         /// <summary>
         /// Gets or initializes the category name.
         /// </summary>
-        public required string CategoryName { get; init; }
+        public string CategoryName
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_categoryName))
+                    throw new Exception("CategoryName is required.");
+                return _categoryName;
+            }
+            init
+            {
+                _categoryName = value;
+            }
+        }
     }
 }
