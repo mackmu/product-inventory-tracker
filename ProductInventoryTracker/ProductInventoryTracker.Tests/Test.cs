@@ -16,11 +16,11 @@
     public class CategoryClassTests
     {
         [TestMethod]
-        public void GetName()
+        public void GetCategoryName()
         {
-            var c = new Category(32, "Hats");
+            var category = new Category { CategoryID = 1123, CategoryName = "Cars" };
 
-            Assert.AreEqual("Hats", c.GetCategoryName);
+            Assert.AreEqual("Cars", category.CategoryName);
         }
 
     }
