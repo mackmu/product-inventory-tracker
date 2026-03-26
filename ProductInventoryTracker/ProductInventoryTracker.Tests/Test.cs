@@ -10,6 +10,16 @@
 
             Assert.AreEqual(310.86m, p.Subtotal);
         }
+
+        [TestMethod]
+        public void CalculateSubtotal_WithZero_ReturnsZero()
+        {
+            var p = new Product(1, "Test", 0m, 10, 1);
+
+            decimal result = p.Subtotal;
+
+            Assert.AreEqual(0m, result);
+        }
     }
 
     [TestClass]
