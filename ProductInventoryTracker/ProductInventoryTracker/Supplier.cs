@@ -14,7 +14,7 @@ namespace ProductInventoryTracker
         /// <summary>
         /// Name of the supplier.
         /// </summary>
-        private string suplierName;
+        private string supplierName;
 
         /// <summary>
         /// Email address of the supplier.
@@ -25,13 +25,32 @@ namespace ProductInventoryTracker
         /// Supplier class constructor that initializes the supplier's ID, name, and email address.
         /// </summary>
         /// <param name="supplierID"></param>
-        /// <param name="suplierName"></param>
+        /// <param name="supplierName"></param>
         /// <param name="supplierEmail"></param>
-        public Supplier(int supplierID, string suplierName, string supplierEmail)
+        public Supplier(int supplierID, string supplierName, string supplierEmail)
         {
             this.supplierID = supplierID;
-            this.suplierName = suplierName;
+            this.supplierName = supplierName;
             this.supplierEmail = supplierEmail;
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the Supplier Name is not empty (valid) or empty (not valid).
+        /// </summary>
+        public bool IsNameValid
+        {
+            get
+            {
+                // Logic: If the name is NOT equal to empty quotes, it's valid
+                if (this.supplierName != "")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
     }
 }
