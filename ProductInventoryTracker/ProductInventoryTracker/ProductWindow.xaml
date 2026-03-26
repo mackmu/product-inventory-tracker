@@ -7,16 +7,17 @@
         mc:Ignorable="d"
         Title="ProductWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="112,58,0,0" TextWrapping="Wrap" Text="Product Entry" FontSize="17" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,58,0,0" TextWrapping="Wrap" Text="Add Product" FontSize="17" FontWeight="Bold" VerticalAlignment="Top"/>
         <Label Content="Product Name" HorizontalAlignment="Left" Margin="112,106,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Margin="203,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
         <Label Content="Price" HorizontalAlignment="Left" Margin="163,136,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="204,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73"/>
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="143,166,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtQuantity" HorizontalAlignment="Left" Margin="204,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
-        <Button x:Name="btnCalculate" Content="Calculate Subtotal" HorizontalAlignment="Left" Margin="153,217,0,0" VerticalAlignment="Top" Width="114" Click="btnCalculate_Click"/>
-        <Label Content="Product Subtotal:" HorizontalAlignment="Left" Margin="152,244,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="lblSubtotalDisplay" HorizontalAlignment="Left" Margin="263,249,0,0" TextWrapping="Wrap" Text="$0.00" VerticalAlignment="Top" Width="54"/>
+        <Button x:Name="btnCalculate" Content="Calculate Subtotal" HorizontalAlignment="Left" Margin="178,220,0,0" VerticalAlignment="Top" Width="114" Click="btnCalculate_Click"/>
+        <Label Content="Product Subtotal:" HorizontalAlignment="Left" Margin="178,247,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblSubtotalDisplay" HorizontalAlignment="Left" Margin="288,252,0,0" TextWrapping="Wrap" Text="$0.00" VerticalAlignment="Top" Width="54"/>
+        <Button x:Name="btnSaveProduct" Content="Save" HorizontalAlignment="Left" Margin="413,355,0,0" VerticalAlignment="Top" Height="27" Width="58" Click="btnSaveProduct_Click"/>
 
     </Grid>
 </Window>

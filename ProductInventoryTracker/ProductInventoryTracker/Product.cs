@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace ProductInventoryTracker
 {
     /// <summary>
@@ -54,6 +55,17 @@ namespace ProductInventoryTracker
             this.price = price;
             this.quantity = quantity;
             this.categoryID = categoryID;
+        }
+
+        /// <summary>
+        /// Gets the subtotal calculation based on the product of price and quantity.
+        /// </summary>
+        public decimal Subtotal
+        {
+            get
+            {
+                return this.price * this.quantity;
+            }
         }
     }
 }

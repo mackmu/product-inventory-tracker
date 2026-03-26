@@ -29,18 +29,27 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            string s1 = txtPrice.Text;
-            string s2 = txtQuantity.Text;
+            // 1. Get numbers from the UI.
+            decimal.TryParse(txtPrice.Text, out decimal d1);
+            int.TryParse(txtQuantity.Text, out int d2);
 
-            decimal d1 = 0m;
-            decimal.TryParse(s1, out d1);
+            // 2. Create the object.
+            Product myProduct = new Product(0, "Temp", d1, d2, 0);
 
-            decimal d2 = 0m;
-            decimal.TryParse(s2, out d2);
+            // 3. Get the Subtotal property from the Product class.
+            lblSubtotalDisplay.Text = myProduct.Subtotal.ToString("C"); // (Show currency)
+        }
 
-            decimal subtotal = (d1 * d2);
-
-            lblSubtotalDisplay.Text = subtotal.ToString();
+        /// <summary>
+        /// Saves a product when product info is succesfully entered.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event (the button).</param>
+        /// <param name="e">The event data.</param>
+        private void btnSaveProduct_Click(object sender, RoutedEventArgs e)
+        {
+            // Saved successfully message for 'Save' a product button.
+            MessageBox.Show("Product saved successfully!"); // This shows the popup language.
+            this.Close(); // This closes the current window.
         }
     }
 }

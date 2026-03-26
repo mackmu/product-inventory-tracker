@@ -21,5 +21,17 @@ namespace ProductInventoryTracker
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Adds a category when category name is succesfully entered.
+        /// </summary>
+        /// <param name="sender">The object that triggered the event (the button).</param>
+        /// <param name="e">The event data.</param>
+        private void btnAddCategory_Click(object sender, RoutedEventArgs e)
+        {
+            // Added successfully message for 'Add' a category button.
+            MessageBox.Show("Category added successfully!"); // This shows the popup language.
+            this.Close(); // This closes the current window.
+        }
     }
 }
