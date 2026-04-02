@@ -67,5 +67,11 @@ namespace ProductInventoryTracker
                 return this.price * this.quantity;
             }
         }
+
+        // Product details
+        public override string ToString()
+        {
+            return $"{this.productName} {this.productID}, price {this.price}, quanity {this.quantity}";
+        }
     }
 }
