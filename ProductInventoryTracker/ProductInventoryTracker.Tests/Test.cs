@@ -26,6 +26,18 @@ namespace ProductInventoryTracker.Tests
         }
 
         [TestMethod]
+        public void Price_Vaidation()
+        {
+            Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => {
+                var p = new Product(1, "Test", 0m, 10, 1);
+            });
+
+            var p = new Product(1, "Test", 10.45m, 10, 1);
+
+            Assert.AreEqual(10.45m, p.Price);
+        }
+
+        [TestMethod]
         public void ToStringReturns_ExpectedResult()
         {
             var p = new Product(1, "Test", 0m, 10, 1);
