@@ -56,5 +56,10 @@ namespace ProductInventoryTracker
 
             sw.ShowDialog();
         }
+
+        private void txtBulletinBoard_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // Placeholder where future logic for the Main Window "Bulletin Board" text will go.
+        }
     }
 }
