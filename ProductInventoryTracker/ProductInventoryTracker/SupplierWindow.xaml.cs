@@ -30,7 +30,7 @@ namespace ProductInventoryTracker
         private void btnSaveSupplier_Click(object sender, RoutedEventArgs e)
         {
             // Temporary Supplier object.
-            Supplier tempSupplier = new Supplier(0, txtSupplierName.Text, txtSupplierEmail.Text, "0000000000");
+            Supplier tempSupplier = new Supplier(0, txtSupplierName.Text, txtSupplierEmail.Text, txtSupplierPhone.Text);
 
             if (tempSupplier.IsNameValid == true)
             {
@@ -42,6 +42,40 @@ namespace ProductInventoryTracker
             {
                 // Failure Message
                 MessageBox.Show("Error: Supplier Name cannot be blank.");
+            }
+        }
+
+        private void txtSupplierPhone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // If the user is deleting (backspacing), don't force the formatting
+            if (e.Changes.Any(c => c.RemovedLength > 0 && c.AddedLength == 0))
+            {
+                return;
+            }
+
+            // 1. Get just the digits from the current text
+            string digitsOnly = new string(txtSupplierPhone.Text.Where(char.IsDigit).ToArray());
+
+            string formatted = "";
+
+            // 2. Build the format based on length
+            if (digitsOnly.Length > 0)
+            {
+                if (digitsOnly.Length < 3)
+                    formatted = $"({digitsOnly}";
+                else if (digitsOnly.Length <= 6)
+                    formatted = $"({digitsOnly.Substring(0, 3)}) {digitsOnly.Substring(3)}";
+                else
+                    formatted = $"({digitsOnly.Substring(0, 3)}) {digitsOnly.Substring(3, 3)}-{digitsOnly.Substring(6, Math.Min(4, digitsOnly.Length - 6))}";
+            }
+
+            // 3. Update the text box with the formatted version
+            if (txtSupplierPhone.Text != formatted)
+            {
+                txtSupplierPhone.Text = formatted;
+
+                // This line is super important so the cursor doesn't jump to the start!
+                txtSupplierPhone.SelectionStart = txtSupplierPhone.Text.Length;
             }
         }
     }
