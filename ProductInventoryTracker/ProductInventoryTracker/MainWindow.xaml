@@ -10,8 +10,11 @@
         <TextBlock HorizontalAlignment="Center" Margin="0,39,0,0" TextWrapping="Wrap" Text="Product Inventory Tracker" Foreground="DimGray" FontSize="29" FontWeight="Bold" VerticalAlignment="Top"/>
         <TextBox Name="txtBulletinBoard" HorizontalAlignment="Center" Margin="0,124,0,0" Width="472" Height="109" Padding="17" TextWrapping="Wrap" BorderBrush="LightGray" FontStyle="Italic" AcceptsReturn="True" 
          VerticalScrollBarVisibility="Auto" Text="Click here... add notes, jot down daily goals or product updates for your team" Foreground="Gray" FontSize="14" VerticalAlignment="Top" TextChanged="txtBulletinBoard_TextChanged"/>
-        <Button x:Name="btnProducts" Content="Products" HorizontalAlignment="Left" Margin="184,284,0,0" VerticalAlignment="Top" Width="120" Click="btnProducts_Click"/>
-        <Button x:Name="btnCategories" Content="Categories" HorizontalAlignment="Center" Margin="0,284,0,0" VerticalAlignment="Top" Width="120" Click="btnCategories_Click"/>
-        <Button x:Name="btnSuppliers" Content="Suppliers" HorizontalAlignment="Left" Margin="496,284,0,0" VerticalAlignment="Top" Width="120" Click="btnSuppliers_Click"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,284,0,0">
+            <Button x:Name="btnProducts" Content="Products" Width="120" Margin="10,0" Click="btnProducts_Click"/>
+            <Button x:Name="btnCategories" Content="Categories" Width="120" Margin="10,0" Click="btnCategories_Click"/>
+            <Button x:Name="btnSuppliers" Content="Suppliers" Width="120" Margin="10,0" Click="btnSuppliers_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

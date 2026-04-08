@@ -7,13 +7,24 @@
         mc:Ignorable="d"
         Title="SupplierWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="112,58,0,0" TextWrapping="Wrap" Text="Add Supplier" FontSize="17" FontWeight="Bold" VerticalAlignment="Top"/>
-        <Label Content="Supplier Name" HorizontalAlignment="Left" Margin="112,106,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSupplierName" HorizontalAlignment="Left" Margin="203,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
-        <Label Content="Email" HorizontalAlignment="Left" Margin="163,136,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSupplierEmail" HorizontalAlignment="Left" Margin="204,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209"/>
-        <Button x:Name="btnSaveSupplier" Content="Save" HorizontalAlignment="Left" Margin="400,237,0,0" VerticalAlignment="Top" Height="27" Width="58" Click="btnSaveSupplier_Click"/>
-        <Label Content="Phone number" HorizontalAlignment="Left" Margin="113,167,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSupplierPhone" HorizontalAlignment="Left" MaxLength="14" Margin="204,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" TextChanged="txtSupplierPhone_TextChanged"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="350">
+
+            <TextBlock Text="Add Supplier" FontSize="17" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,25"/>
+
+            <Label Content="Supplier Name"/>
+            <TextBox x:Name="txtSupplierName" Margin="0,0,0,10"/>
+
+            <Label Content="Email"/>
+            <TextBox x:Name="txtSupplierEmail" Margin="0,0,0,10"/>
+
+            <Label Content="Phone number"/>
+            <TextBox x:Name="txtSupplierPhone" MaxLength="14" Margin="0,0,0,25" 
+                 TextChanged="txtSupplierPhone_TextChanged"/>
+
+            <Button x:Name="btnSaveSupplier" Content="Save" Width="80" Height="30" 
+                HorizontalAlignment="Center" Click="btnSaveSupplier_Click"/>
+
+        </StackPanel>
     </Grid>
 </Window>
