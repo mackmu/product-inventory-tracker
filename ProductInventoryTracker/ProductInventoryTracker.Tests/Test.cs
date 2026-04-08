@@ -24,8 +24,18 @@ namespace ProductInventoryTracker.Tests
             // 3. Assert
             Assert.AreEqual(0m, result);
         }
-    }
 
+        [TestMethod]
+        public void ToStringReturns_ExpectedResult()
+        {
+            var p = new Product(1, "Test", 0m, 10, 1);
+
+            var result = p.ToString();
+
+            Assert.AreEqual("", result);
+        }
+    }
+  
     [TestClass]
     public class CategoryClassTests
     {
@@ -35,15 +45,6 @@ namespace ProductInventoryTracker.Tests
             var category = new Category { CategoryID = 1123, CategoryName = "Cars" };
 
             Assert.AreEqual("Cars", category.CategoryName);
-        }
-
-        [TestMethod]
-        public void Invalid_Instantiation_ThrowsException()
-        {
-            Assert.Throws<Exception>(() =>
-            {
-                new Category { CategoryID = 123, CategoryName = 2 };
-            });
         }
     }
 
