@@ -42,7 +42,7 @@ namespace ProductInventoryTracker.Tests
         {
             Assert.Throws<Exception>(() =>
             {
-                new Category { CategoryID = 123, CategoryName = 2 };
+                new Category { CategoryID = 123, CategoryName = "2" };
             });
         }
     }
@@ -54,7 +54,7 @@ namespace ProductInventoryTracker.Tests
         public void IsNameValid_EmptyName_ReturnsFalse()
         {
             // 1. Arrange
-            Supplier s = new Supplier(0, "", "test@email.com");
+            Supplier s = new Supplier(0, "", "test@email.com", "0000000000");
 
             // 2. Act
             bool result = s.IsNameValid;

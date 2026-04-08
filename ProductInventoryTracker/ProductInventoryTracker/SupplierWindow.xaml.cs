@@ -30,7 +30,7 @@ namespace ProductInventoryTracker
         private void btnSaveSupplier_Click(object sender, RoutedEventArgs e)
         {
             // Temporary Supplier object.
-            Supplier tempSupplier = new Supplier(0, txtSupplierName.Text, txtSupplierEmail.Text);
+            Supplier tempSupplier = new Supplier(0, txtSupplierName.Text, txtSupplierEmail.Text, "0000000000");
 
             if (tempSupplier.IsNameValid == true)
             {
