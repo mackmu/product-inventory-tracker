@@ -38,6 +38,16 @@ namespace ProductInventoryTracker.Tests
         }
 
         [TestMethod]
+        public void UpdateStock_Check()
+        {
+            var p = new Product(1, "Test", 10.45m, 10, 1);
+
+            p.UpdateStock(38);
+
+            Assert.AreEqual(48, p.Quantity);
+        }
+
+        [TestMethod]
         public void ToStringReturns_ExpectedResult()
         {
             var p = new Product(1, "Test", 0m, 10, 1);
