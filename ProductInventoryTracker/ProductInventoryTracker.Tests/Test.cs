@@ -64,6 +64,19 @@ namespace ProductInventoryTracker.Tests
             // 3. Assert
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public void IsNameValid_WithActualName_ReturnsTrue()
+        {
+            // 1. Arrange
+            Supplier s = new Supplier(1, "Test Supplier", "test@email.com", "1234567890");
+
+            // 2. Act
+            bool result = s.IsNameValid;
+
+            // 3. Assert
+            Assert.IsTrue(result);
+        }
     }
 
 
