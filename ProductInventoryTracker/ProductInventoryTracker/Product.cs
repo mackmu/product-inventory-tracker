@@ -50,11 +50,11 @@ namespace ProductInventoryTracker
         /// <param name="categoryID">The identifier for the category to which the product belongs. Must be a positive integer.</param>
         public Product(int productID, string productName, decimal price, int quantity, int categoryID)
         {
+            Price = price;
+            Quantity = quantity;
             this.productID = productID;
-            this.productName = productName;
-            this.price = price;
-            this.quantity = quantity;
             this.categoryID = categoryID;
+            this.productName = productName;
         }
 
         /// <summary>
@@ -62,10 +62,47 @@ namespace ProductInventoryTracker
         /// </summary>
         public decimal Subtotal
         {
-            get
+            get => this.price * this.quantity;
+        }
+
+        // Price validation
+        public decimal Price
+        {
+            get => this.price;
+
+            set
             {
-                return this.price * this.quantity;
+                if (value <= 0 || value > 1000)
+                    throw new ArgumentOutOfRangeException("Please provide a value that between 0 and 1000.");
+
+                this.price = value;
             }
+        }
+
+        // Quantity validation
+        public int Quantity
+        {
+            get => this.quantity;
+
+            set
+            {
+                if (value <= 0 || value > 1000)
+                    throw new ArgumentOutOfRangeException("Please provide a value that between 0 and 1000.");
+
+                this.quantity = value;
+            }
+        }
+
+        // Updates the product quanity
+        public void UpdateStock(int amount)
+        {
+            this.Quantity += amount;
+        }
+
+        // Product details
+        public override string ToString()
+        {
+            return $"{this.productName} {this.productID}, price {this.price}, quanity {this.quantity}";
         }
     }
 }

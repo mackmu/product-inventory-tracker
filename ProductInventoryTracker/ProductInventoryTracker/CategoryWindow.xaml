@@ -7,9 +7,18 @@
         mc:Ignorable="d"
         Title="CategoryWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="112,58,0,0" TextWrapping="Wrap" Text="Add Category" FontSize="17" FontWeight="Bold" VerticalAlignment="Top"/>
-        <Label Content="Category Name" HorizontalAlignment="Left" Margin="112,106,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCategoryName" HorizontalAlignment="Left" Margin="205,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
-        <Button x:Name="btnAddCategory" Content="Add" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="380,110,0,0" VerticalAlignment="Top" Height="18" Width="48" Click="btnAddCategory_Click"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="450">
+
+            <TextBlock Text="Add Category" FontSize="17" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,50"/>
+
+            <Label Content="Category Name" Margin="85,0,0,0" HorizontalAlignment="Left"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                <TextBox x:Name="txtCategoryName" Width="200" Margin="0,0,10,0"/>
+                <Button x:Name="btnAddCategory" Content="Add" Width="60" Height="25" Click="btnAddCategory_Click"/>
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Window>
