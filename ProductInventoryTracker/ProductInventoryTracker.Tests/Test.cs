@@ -58,6 +58,7 @@ namespace ProductInventoryTracker.Tests
 
             Assert.AreEqual("Cars", category.CategoryName);
         }
+
     }
 
     [TestClass]
@@ -67,7 +68,7 @@ namespace ProductInventoryTracker.Tests
         public void IsNameValid_EmptyName_ReturnsFalse()
         {
             // 1. Arrange
-            Supplier s = new Supplier(0, "", "test@email.com");
+            Supplier s = new Supplier(0, "", "test@email.com", "0000000000");
 
             // 2. Act
             bool result = s.IsNameValid;
