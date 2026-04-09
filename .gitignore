@@ -3,7 +3,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+.vs/*
+.vs/v18
 .vs/
+*.suo
+*.user
+*.cache
+*.dbmdl
 
 # User-specific files
 *.rsuser
@@ -363,3 +369,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ProductInventoryTracker/.vs/ProductInventoryTracker.slnx/DesignTimeBuild/.dtbcache.v2
+/ProductInventoryTracker/.vs/ProductInventoryTracker.slnx/v18/.suo
+/ProductInventoryTracker/.vs/ProductInventoryTracker.slnx/v18/DocumentLayout.backup.json
+/ProductInventoryTracker/.vs/ProductInventoryTracker.slnx/v18/DocumentLayout.json
