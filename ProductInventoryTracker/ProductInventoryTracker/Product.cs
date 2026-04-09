@@ -93,6 +93,12 @@ namespace ProductInventoryTracker
             }
         }
 
+        // Updates the product quanity
+        public void UpdateStock(int amount)
+        {
+            this.Quantity += amount;
+        }
+
         // Product details
         public override string ToString()
         {
