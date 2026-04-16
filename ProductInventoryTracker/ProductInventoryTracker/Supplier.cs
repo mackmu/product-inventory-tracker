@@ -42,6 +42,67 @@ namespace ProductInventoryTracker
         }
 
         /// <summary>
+        /// Gets and sets the supplier's ID.
+        /// </summary>
+        public int SupplierID
+        {
+            get
+            {
+                return this.supplierID;
+            }
+            set
+            {
+                this.supplierID = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the supplier's email.
+        /// </summary>
+        public string SupplierEmail
+        {
+            get
+            {
+                return this.supplierEmail;
+            }
+            set
+            {
+                this.supplierEmail = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the supplier's name.
+        /// </summary>
+        public string SupplierName
+        {
+            get
+            {
+                return this.supplierName;
+            }
+            set
+            {
+                this.supplierName = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the supplier's phone number.
+        /// </summary>
+        public string SupplierPhone
+        {
+            get
+            {
+                return this.supplierPhone;
+            }
+            set
+            {
+                this.supplierPhone = value;
+            }
+        }
+
+
+        /// <summary>
         /// Gets a value indicating whether the Supplier Name is not empty (valid) or empty (not valid).
         /// </summary>
         public bool IsNameValid
