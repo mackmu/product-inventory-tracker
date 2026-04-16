@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Collections.ObjectModel;
 
 namespace ProductInventoryTracker
 {
     public class InventoryManager
     {
-        public List<Product> ProductList {  get; set; }
-        public List<Supplier> SupplierList { get; set; }
+        public ObservableCollection<Product> ProductList {  get; set; }
+        public ObservableCollection<Supplier> SupplierList { get; set; }
 
         public InventoryManager()
         {
-            ProductList = new List<Product>();
-            SupplierList = new List<Supplier>();
+            ProductList = new ObservableCollection<Product>();
+            SupplierList = new ObservableCollection<Supplier>();
         }
 
     }
