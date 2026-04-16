@@ -17,9 +17,11 @@ namespace ProductInventoryTracker
     /// </summary>
     public partial class SupplierWindow : Window
     {
-        public SupplierWindow()
+        private InventoryManager manager;
+        public SupplierWindow(InventoryManager manager)
         {
             InitializeComponent();
+            this.manager = manager;
         }
 
         /// <summary>
@@ -31,6 +33,7 @@ namespace ProductInventoryTracker
         {
             // Temporary Supplier object.
             Supplier tempSupplier = new Supplier(0, txtSupplierName.Text, txtSupplierEmail.Text, txtSupplierPhone.Text);
+            this.manager.SupplierList.Add(tempSupplier);
 
             if (tempSupplier.IsNameValid == true)
             {

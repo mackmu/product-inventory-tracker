@@ -16,9 +16,11 @@ namespace ProductInventoryTracker
     /// </summary>
     public partial class MainWindow : Window
     {
+        private InventoryManager inventoryManger;
         public MainWindow()
         {
             InitializeComponent();
+            this.inventoryManger = new InventoryManager();
         }
 
         /// <summary>
@@ -28,7 +30,7 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnProducts_Click(object sender, RoutedEventArgs e)
         {
-            ProductWindow pw = new ProductWindow();
+            ProductWindow pw = new ProductWindow(this.inventoryManger);
 
             pw.ShowDialog();
         }
@@ -52,7 +54,7 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnSuppliers_Click(object sender, RoutedEventArgs e)
         {
-            SupplierWindow sw = new SupplierWindow();
+            SupplierWindow sw = new SupplierWindow(this.inventoryManger);
 
             sw.ShowDialog();
         }

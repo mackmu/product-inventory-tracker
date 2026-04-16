@@ -17,9 +17,11 @@ namespace ProductInventoryTracker
     /// </summary>
     public partial class ProductWindow : Window
     {
-        public ProductWindow()
+        private InventoryManager manager;
+        public ProductWindow(InventoryManager manager)
         {
             InitializeComponent();
+            this.manager = manager;
         }
 
         /// <summary>
@@ -35,6 +37,7 @@ namespace ProductInventoryTracker
 
             // 2. Create the object.
             Product myProduct = new Product(0, "Temp", d1, d2, 0);
+            this.manager.ProductList.Add(myProduct);
 
             // 3. Get the Subtotal property from the Product class.
             lblSubtotalDisplay.Text = myProduct.Subtotal.ToString("C"); // (Show currency)
