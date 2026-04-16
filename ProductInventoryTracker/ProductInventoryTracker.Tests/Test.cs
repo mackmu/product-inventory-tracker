@@ -2,6 +2,24 @@
 namespace ProductInventoryTracker.Tests
 {
     [TestClass]
+    public class InventoryManagerTests
+    {
+        [TestMethod]
+        public void AddProduct_ShouldIncreaseListCount()
+        {
+            // 1. ARRANGE
+            InventoryManager manager = new InventoryManager();
+            Product testProduct = new Product(1, "Test Item", 10.00m, 5, 1);
+
+            // 2. ACT
+            manager.ProductList.Add(testProduct);
+
+            // 3. ASSERT
+            Assert.HasCount(1, manager.ProductList);
+        }
+    }
+
+    [TestClass]
     public class ProductClassTests
     {
         [TestMethod]
