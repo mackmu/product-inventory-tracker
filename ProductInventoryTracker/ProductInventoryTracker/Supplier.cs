@@ -101,17 +101,69 @@ namespace ProductInventoryTracker
             }
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the supplier's ID is valid.
+        /// </summary>
+        public bool IsIDValid
+        {
+            get
+            {
+                if(this.supplierID > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
 
         /// <summary>
-        /// Gets a value indicating whether the Supplier Name is not empty (valid) or empty (not valid).
+        /// Gets a value indicating whether the supplier's name is valid.
         /// </summary>
         public bool IsNameValid
         {
             get
             {
-                // Logic: If the name is NOT equal to empty quotes, it's valid
-                if (this.supplierName != "")
+                if (this.supplierName != null && this.supplierName != "")
                 {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        ///  Gets a value indicating whether the supplier's email address is valid.
+        /// </summary>
+        public bool IsEmailValid
+        {
+            get
+            {
+                if (this.supplierEmail != null && this.supplierEmail != "" && this.supplierEmail.Contains('@'))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the supplier's phone number is valid.
+        /// </summary>
+        public bool IsPhoneValid
+        {
+            get
+            {
+                if (this.supplierPhone != null && this.supplierPhone != "")
+                { 
                     return true;
                 }
                 else
