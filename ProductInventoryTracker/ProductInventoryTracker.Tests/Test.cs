@@ -30,17 +30,28 @@ namespace ProductInventoryTracker.Tests
             Assert.AreEqual(310.86m, p.Subtotal);
         }
 
+        /// <summary>
+        /// Test that price cannot be 0.
+        /// </summary>
         [TestMethod]
-        public void CalculateSubtotal_WithZero_ReturnsZero()
+        public void Price_SetToZero_ThrowsException()
         {
-            // 1. Arrange
-            var p = new Product(1, "Test", 0m, 10, 1);
+            // Arrange
+            int id = 1;
+            string name = "Test Product";
+            decimal illegalPrice = 0m;
+            int qty = 10;
+            int catID = 1;
 
-            // 2. Act
-            decimal result = p.Subtotal;
+            // Act
+            try 
+            {
+                new Product(id, name, illegalPrice, qty, catID);
 
-            // 3. Assert
-            Assert.AreEqual(0m, result);
+                // Assert
+                Assert.Fail("The constructor should have thrown an error for zero price");
+            }
+            catch (ArgumentOutOfRangeException) { }
         }
 
         [TestMethod]
@@ -68,11 +79,14 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void ToStringReturns_ExpectedResult()
         {
-            var p = new Product(1, "Test", 0m, 10, 1);
+            // Arrange
+            var p = new Product(1, "Test Product", 10m, 5, 1);
 
+            // Act
             var result = p.ToString();
 
-            Assert.AreEqual("", result);
+            //Assert
+            Assert.AreEqual("Test Product 1, price 10, quantity 5", result);
         }
     }
   
