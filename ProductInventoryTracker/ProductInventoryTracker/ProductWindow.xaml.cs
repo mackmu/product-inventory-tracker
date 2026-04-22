@@ -50,9 +50,34 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnSaveProduct_Click(object sender, RoutedEventArgs e)
         {
-            // Saved successfully message for 'Save' a product button.
-            MessageBox.Show("Product saved successfully!"); // This shows the popup language.
-            this.Close(); // This closes the current window.
+            try
+            {
+                // Instantiate a temporary Product.
+                Product tempProduct = new Product(0, txtProductName.Text, decimal.Parse(txtPrice.Text), int.Parse(txtQuantity.Text), 0);
+
+                // Add it to the Product list and show Success Message.
+                this.manager.ProductList.Add(tempProduct);
+                MessageBox.Show("Product saved successfully!");
+                this.ResetProductForm();
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Resets the Product window form fields.
+        /// </summary>
+        private void ResetProductForm()
+        {
+            // Clear name, email and phone.
+            txtProductName.Text = "";
+            txtPrice.Text = "";
+            txtQuantity.Text = "";
+
+            //Reset the cursor to the name field.
+            txtProductName.Focus();
         }
     }
 }
