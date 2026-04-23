@@ -7,15 +7,23 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void AddProduct_ShouldIncreaseListCount()
         {
-            // 1. ARRANGE
             InventoryManager manager = new InventoryManager();
             Product testProduct = new Product(1, "Test Item", 10.00m, 5, 1);
 
-            // 2. ACT
             manager.ProductList.Add(testProduct);
 
-            // 3. ASSERT
             Assert.HasCount(1, manager.ProductList);
+        }
+
+        [TestMethod]
+        public void AddSupply_ShouldIncreaseListCount()
+        {
+            InventoryManager manager = new InventoryManager();
+            Supplier testProduct = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
+
+            manager.SupplierList.Add(testProduct);
+
+            Assert.HasCount(1, manager.SupplierList);
         }
     }
 
