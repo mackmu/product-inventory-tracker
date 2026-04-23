@@ -128,13 +128,13 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void IsNameValid_EmptyName_ReturnsFalse()
         {
-            // 1. Arrange
+            // Arrange
             Supplier s = new Supplier(0, "", "test@email.com", "0000000000");
 
-            // 2. Act
+            // Act
             bool result = s.IsNameValid;
 
-            // 3. Assert
+            // Assert
             Assert.IsFalse(result);
         }
 
@@ -149,6 +149,20 @@ namespace ProductInventoryTracker.Tests
 
             // 3. Assert
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void IsEmailValid_MissingAtSymbol_ReturnsFalse()
+        {
+            // ARRANGE
+            Supplier testSupplier = new Supplier(1, "Test Supplier", "manager-at-mke-inventory.com", "1234567890");
+            testSupplier.SupplierEmail = "manager-at-mke-inventory.com"; // Missing @
+
+            // ACT
+            bool result = testSupplier.IsEmailValid;
+
+            // ASSERT
+            Assert.IsFalse(result);
         }
     }
 
