@@ -25,6 +25,17 @@ namespace ProductInventoryTracker.Tests
 
             Assert.HasCount(1, manager.SupplierList);
         }
+
+        [TestMethod]
+        public void ToString_Return()
+        {
+            InventoryManager manager = new InventoryManager();
+            Supplier testProduct = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
+
+            manager.SupplierList.Add(testProduct);
+
+            Assert.AreEqual("0 Products and 1 Suppliers", manager.ToString());
+        }
     }
 
     [TestClass]
