@@ -16,11 +16,11 @@ namespace ProductInventoryTracker
     /// </summary>
     public partial class MainWindow : Window
     {
-        private InventoryManager inventoryManger;
+        private InventoryManager inventoryManager;
         public MainWindow()
         {
             InitializeComponent();
-            this.inventoryManger = new InventoryManager();
+            this.inventoryManager = new InventoryManager();
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnProducts_Click(object sender, RoutedEventArgs e)
         {
-            ProductWindow pw = new ProductWindow(this.inventoryManger);
+            ProductWindow pw = new ProductWindow(this.inventoryManager);
 
             pw.ShowDialog();
         }
@@ -54,14 +54,41 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnSuppliers_Click(object sender, RoutedEventArgs e)
         {
-            SupplierWindow sw = new SupplierWindow(this.inventoryManger);
+            SupplierWindow sw = new SupplierWindow(this.inventoryManager);
 
             sw.ShowDialog();
         }
 
+        /// <summary>
+        /// Bulletin Board text change event handler.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtBulletinBoard_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Placeholder where future logic for the Main Window "Bulletin Board" text will go.
+            // Placeholder where future logic for the Main Window "Bulletin Board" text could go.
+        }
+
+        private void txtBulletinBoard_GotFocus(object sender, RoutedEventArgs e)
+        {
+            // Checks to see is the user is clicking inside of the Bulletin Board textbox.
+            if (txtBulletinBoard.Text == "Click here... add notes, jot down daily goals or product updates for your team")
+            {
+                txtBulletinBoard.Text = ""; // clears text.
+                txtBulletinBoard.Foreground = Brushes.Black; //sets text color.
+                txtBulletinBoard.FontStyle = FontStyles.Normal; // Removes italics set in placeholder text.
+            }
+        }
+
+        private void txtBulletinBoard_LostFocus(object sender, RoutedEventArgs e)
+        {
+            // Checks if the user leaves the Bulletin Board textbox empty.
+            if (string.IsNullOrWhiteSpace(txtBulletinBoard.Text))
+            {
+                txtBulletinBoard.Text = "Click here... add notes, jot down daily goals or product updates for your team"; // Restores placeholder text.
+                txtBulletinBoard.Foreground = Brushes.Gray; // Restores text color.
+                txtBulletinBoard.FontStyle = FontStyles.Italic; // Restores italics.
+            }
         }
     }
 }

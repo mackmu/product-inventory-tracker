@@ -9,7 +9,7 @@
     <Grid>
         <TextBlock HorizontalAlignment="Center" Margin="0,39,0,0" TextWrapping="Wrap" Text="Product Inventory Tracker" Foreground="DimGray" FontSize="29" FontWeight="Bold" VerticalAlignment="Top"/>
         <TextBox Name="txtBulletinBoard" HorizontalAlignment="Center" Margin="0,124,0,0" Width="472" Height="109" Padding="17" TextWrapping="Wrap" BorderBrush="LightGray" FontStyle="Italic" AcceptsReturn="True" 
-         VerticalScrollBarVisibility="Auto" Text="Click here... add notes, jot down daily goals or product updates for your team" Foreground="Gray" FontSize="14" VerticalAlignment="Top" TextChanged="txtBulletinBoard_TextChanged"/>
+         VerticalScrollBarVisibility="Auto" GotFocus="txtBulletinBoard_GotFocus" LostFocus="txtBulletinBoard_LostFocus" Text="Click here... add notes, jot down daily goals or product updates for your team" Foreground="Gray" FontSize="14" VerticalAlignment="Top" TextChanged="txtBulletinBoard_TextChanged"/>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,284,0,0">
             <Button x:Name="btnProducts" Content="Products" Width="120" Margin="10,0" Click="btnProducts_Click"/>
