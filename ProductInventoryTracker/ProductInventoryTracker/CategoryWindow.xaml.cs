@@ -29,9 +29,20 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnAddCategory_Click(object sender, RoutedEventArgs e)
         {
-            // Added successfully message for 'Add' a category button.
-            MessageBox.Show("Category added successfully!"); // This shows the popup language.
-            this.Close(); // This closes the current window.
+            // Success message for 'Add' a category button.
+            MessageBox.Show("Category added successfully!");
+            this.ResetProductForm();
+        }
+
+        /// <summary>
+        /// Resets the Category window form fields.
+        /// </summary>
+        public void ResetProductForm()
+        {
+            txtCategoryName.Text = "";
+
+            //Reset the cursor to the name field.
+            txtCategoryName.Focus();
         }
     }
 }
