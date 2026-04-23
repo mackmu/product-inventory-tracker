@@ -16,5 +16,10 @@ namespace ProductInventoryTracker
             SupplierList = new ObservableCollection<Supplier>();
         }
 
+        public override string ToString()
+        {
+            return $"{ProductList.Count} Products and {SupplierList.Count} Suppliers";
+        }
+
     }
 }
