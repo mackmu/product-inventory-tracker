@@ -102,7 +102,7 @@ namespace ProductInventoryTracker
         // Product details
         public override string ToString()
         {
-            return $"{this.productName} {this.productID}, price {this.price}, quanity {this.quantity}";
+            return $"{this.productName} {this.productID}, price {this.price}, quantity {this.quantity}";
         }
     }
 }

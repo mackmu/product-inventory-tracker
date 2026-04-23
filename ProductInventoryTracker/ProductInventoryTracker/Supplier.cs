@@ -42,15 +42,128 @@ namespace ProductInventoryTracker
         }
 
         /// <summary>
-        /// Gets a value indicating whether the Supplier Name is not empty (valid) or empty (not valid).
+        /// Gets and sets the supplier's ID.
+        /// </summary>
+        public int SupplierID
+        {
+            get
+            {
+                return this.supplierID;
+            }
+            set
+            {
+                this.supplierID = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the supplier's email.
+        /// </summary>
+        public string SupplierEmail
+        {
+            get
+            {
+                return this.supplierEmail;
+            }
+            set
+            {
+                this.supplierEmail = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the supplier's name.
+        /// </summary>
+        public string SupplierName
+        {
+            get
+            {
+                return this.supplierName;
+            }
+            set
+            {
+                this.supplierName = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets the supplier's phone number.
+        /// </summary>
+        public string SupplierPhone
+        {
+            get
+            {
+                return this.supplierPhone;
+            }
+            set
+            {
+                this.supplierPhone = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the supplier's ID is valid.
+        /// </summary>
+        public bool IsIDValid
+        {
+            get
+            {
+                if(this.supplierID > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the supplier's name is valid.
         /// </summary>
         public bool IsNameValid
         {
             get
             {
-                // Logic: If the name is NOT equal to empty quotes, it's valid
-                if (this.supplierName != "")
+                if (this.supplierName != null && this.supplierName != "")
                 {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        ///  Gets a value indicating whether the supplier's email address is valid.
+        /// </summary>
+        public bool IsEmailValid
+        {
+            get
+            {
+                if (this.supplierEmail != null && this.supplierEmail != "" && this.supplierEmail.Contains('@'))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the supplier's phone number is valid.
+        /// </summary>
+        public bool IsPhoneValid
+        {
+            get
+            {
+                if (this.supplierPhone != null && this.supplierPhone != "")
+                { 
                     return true;
                 }
                 else

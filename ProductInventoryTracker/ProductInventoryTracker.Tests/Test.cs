@@ -2,6 +2,43 @@
 namespace ProductInventoryTracker.Tests
 {
     [TestClass]
+    public class InventoryManagerTests
+    {
+        [TestMethod]
+        public void AddProduct_ShouldIncreaseListCount()
+        {
+            InventoryManager manager = new InventoryManager();
+            Product testProduct = new Product(1, "Test Item", 10.00m, 5, 1);
+
+            manager.ProductList.Add(testProduct);
+
+            Assert.HasCount(1, manager.ProductList);
+        }
+
+        [TestMethod]
+        public void AddSupply_ShouldIncreaseListCount()
+        {
+            InventoryManager manager = new InventoryManager();
+            Supplier testProduct = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
+
+            manager.SupplierList.Add(testProduct);
+
+            Assert.HasCount(1, manager.SupplierList);
+        }
+
+        [TestMethod]
+        public void ToString_Return()
+        {
+            InventoryManager manager = new InventoryManager();
+            Supplier testProduct = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
+
+            manager.SupplierList.Add(testProduct);
+
+            Assert.AreEqual("0 Products and 1 Suppliers", manager.ToString());
+        }
+    }
+
+    [TestClass]
     public class ProductClassTests
     {
         [TestMethod]
@@ -12,17 +49,28 @@ namespace ProductInventoryTracker.Tests
             Assert.AreEqual(310.86m, p.Subtotal);
         }
 
+        /// <summary>
+        /// Test that price cannot be 0.
+        /// </summary>
         [TestMethod]
-        public void CalculateSubtotal_WithZero_ReturnsZero()
+        public void Price_SetToZero_ThrowsException()
         {
-            // 1. Arrange
-            var p = new Product(1, "Test", 0m, 10, 1);
+            // Arrange
+            int id = 1;
+            string name = "Test Product";
+            decimal illegalPrice = 0m;
+            int qty = 10;
+            int catID = 1;
 
-            // 2. Act
-            decimal result = p.Subtotal;
+            // Act
+            try 
+            {
+                new Product(id, name, illegalPrice, qty, catID);
 
-            // 3. Assert
-            Assert.AreEqual(0m, result);
+                // Assert
+                Assert.Fail("The constructor should have thrown an error for zero price");
+            }
+            catch (ArgumentOutOfRangeException) { }
         }
 
         [TestMethod]
@@ -50,11 +98,14 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void ToStringReturns_ExpectedResult()
         {
-            var p = new Product(1, "Test", 0m, 10, 1);
+            // Arrange
+            var p = new Product(1, "Test Product", 10m, 5, 1);
 
+            // Act
             var result = p.ToString();
 
-            Assert.AreEqual("", result);
+            //Assert
+            Assert.AreEqual("Test Product 1, price 10, quantity 5", result);
         }
     }
   
@@ -77,13 +128,13 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void IsNameValid_EmptyName_ReturnsFalse()
         {
-            // 1. Arrange
+            // Arrange
             Supplier s = new Supplier(0, "", "test@email.com", "0000000000");
 
-            // 2. Act
+            // Act
             bool result = s.IsNameValid;
 
-            // 3. Assert
+            // Assert
             Assert.IsFalse(result);
         }
 
@@ -98,6 +149,20 @@ namespace ProductInventoryTracker.Tests
 
             // 3. Assert
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void IsEmailValid_MissingAtSymbol_ReturnsFalse()
+        {
+            // ARRANGE
+            Supplier testSupplier = new Supplier(1, "Test Supplier", "manager-at-mke-inventory.com", "1234567890");
+            testSupplier.SupplierEmail = "manager-at-mke-inventory.com"; // Missing @
+
+            // ACT
+            bool result = testSupplier.IsEmailValid;
+
+            // ASSERT
+            Assert.IsFalse(result);
         }
     }
 
