@@ -15,10 +15,10 @@ namespace ProductInventoryTracker
     /// <summary>
     /// Interaction logic for ProductWindow.xaml
     /// </summary>
-    public partial class ProductWindow : Window
+    public partial class AddProductWindow : Window
     {
         private InventoryManager manager;
-        public ProductWindow(InventoryManager manager)
+        public AddProductWindow(InventoryManager manager)
         {
             InitializeComponent();
             this.manager = manager;
