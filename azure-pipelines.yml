@@ -1,0 +1,49 @@
+# Starter pipeline
+
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: NuGetCommand@2
+  displayName: 'Restore Nuget packages'
+  inputs:
+    command: 'restore'
+    restoreSolution: 'Unit Testing Lesson/Zoo 2.5 Perfect End/*.sln'
+    feedsToUse: 'select'
+- task: MSBuild@1
+  displayName: 'Build Test Library'
+  inputs:
+    solution: 'Unit Testing Lesson/Zoo 2.5 Perfect End/ZooScenario.Tests/ZooScenario.Tests.csproj'
+    msbuildArchitecture: 'x64'
+- task: VSTest@3
+  displayName: 'Run Unit Tests'
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: '**/ZooScenario.Tests.dll'
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+- task: MSBuild@1
+  displayName: 'Build App'
+  inputs:
+    solution: 'Unit Testing Lesson/Zoo 2.5 Perfect End/ZooScenario/ZooScenario.csproj'
+    msbuildArchitecture: 'x64'
+- task: ArchiveFiles@2
+  displayName: 'Compress App'
+  inputs:
+    rootFolderOrFile: 'Unit Testing Lesson/Zoo 2.5 Perfect End/ZooScenario/bin'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
