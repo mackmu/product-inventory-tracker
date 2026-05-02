@@ -8,7 +8,7 @@ namespace ProductInventoryTracker.Tests
         public void AddProduct_ShouldIncreaseListCount()
         {
             InventoryManager manager = new InventoryManager();
-            Product testProduct = new Product(1, "Test Item", 10.00m, 5, 1);
+            Product testProduct = new Product(1, "Test Item", 10.00m, 5, 1, 1);
 
             manager.ProductList.Add(testProduct);
 
@@ -44,7 +44,7 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void CalculateSubtotal()
         {
-            var p = new Product(1, "test", 3.14m, 99, 1);
+            var p = new Product(1, "test", 3.14m, 99, 1, 1);
 
             Assert.AreEqual(310.86m, p.Subtotal);
         }
@@ -61,11 +61,12 @@ namespace ProductInventoryTracker.Tests
             decimal illegalPrice = 0m;
             int qty = 10;
             int catID = 1;
+            int supID = 1;
 
             // Act
             try 
             {
-                new Product(id, name, illegalPrice, qty, catID);
+                new Product(id, name, illegalPrice, qty, catID, supID);
 
                 // Assert
                 Assert.Fail("The constructor should have thrown an error for zero price");
@@ -77,10 +78,10 @@ namespace ProductInventoryTracker.Tests
         public void Price_Vaidation()
         {
             Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => {
-                var p = new Product(1, "Test", 0m, 10, 1);
+                var p = new Product(1, "Test", 0m, 10, 1, 1);
             });
 
-            var p = new Product(1, "Test", 10.45m, 10, 1);
+            var p = new Product(1, "Test", 10.45m, 10, 1, 1);
 
             Assert.AreEqual(10.45m, p.Price);
         }
@@ -88,7 +89,7 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void UpdateStock_Check()
         {
-            var p = new Product(1, "Test", 10.45m, 10, 1);
+            var p = new Product(1, "Test", 10.45m, 10, 1, 1);
 
             p.UpdateStock(38);
 
@@ -99,7 +100,7 @@ namespace ProductInventoryTracker.Tests
         public void ToStringReturns_ExpectedResult()
         {
             // Arrange
-            var p = new Product(1, "Test Product", 10m, 5, 1);
+            var p = new Product(1, "Test Product", 10m, 5, 1, 1);
 
             // Act
             var result = p.ToString();

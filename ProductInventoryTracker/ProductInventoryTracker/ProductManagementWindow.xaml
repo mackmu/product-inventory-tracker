@@ -16,7 +16,15 @@
         <TextBlock Grid.Row="0" Text="Products" FontSize="16" Margin="0,0,0,5"/>
 
         <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="1">
-            <DataGrid x:Name="dgProducts" BorderThickness="0" Background="White">
+            <DataGrid x:Name="dgProducts" ItemsSource="{Binding ProductList}" AutoGenerateColumns="False" IsReadOnly="True" BorderThickness="0" 
+                      RowBackground="White" AlternatingRowBackground="#F0F0F0" GridLinesVisibility="Horizontal" 
+                      HorizontalGridLinesBrush="LightGray" ColumnWidth="*">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Model" Binding="{Binding ProductName}" Width="2*" />
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}" />
+                    <DataGridTextColumn Header="Qty" Binding="{Binding Quantity}" />
+                    <DataGridTextColumn Header="Total" Binding="{Binding Subtotal, StringFormat=C}" />
+                </DataGrid.Columns>
             </DataGrid>
         </Border>
 

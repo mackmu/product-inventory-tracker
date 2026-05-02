@@ -23,8 +23,15 @@ namespace ProductInventoryTracker
         {
             InitializeComponent();
             this.inventoryManager = manager;
+
+            // 1. Tells the Window where to look for data
+            this.DataContext = this.inventoryManager;
+
+            // 2. Tells Manager to get the cars from SQL DB
+            this.inventoryManager.GetAllProducts();
         }
 
+        // Add button
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddProductWindow pw = new AddProductWindow(this.inventoryManager);
@@ -32,11 +39,13 @@ namespace ProductInventoryTracker
             pw.ShowDialog();
         }
 
+        // Edit button
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        // Delete button
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
 

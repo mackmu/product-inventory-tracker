@@ -48,13 +48,22 @@ namespace ProductInventoryTracker
         /// <param name="price">The price of the product. Must be greater than or equal to zero.</param>
         /// <param name="quantity">The quantity of the product in stock. Must be zero or a positive integer.</param>
         /// <param name="categoryID">The identifier for the category to which the product belongs. Must be a positive integer.</param>
-        public Product(int productID, string productName, decimal price, int quantity, int categoryID)
+        /// <param name="supplierID">The identifier for the supplier to which the product belongs. Must be a positive integer.</param>
+        public Product(int productID, string productName, decimal price, int quantity, int categoryID, int supplierID)
         {
             Price = price;
             Quantity = quantity;
             this.productID = productID;
             this.categoryID = categoryID;
             this.productName = productName;
+            this.supplierID = supplierID;
+        }
+
+        // Gets and sets the name of the product.
+        public string ProductName
+        {
+            get => productName;
+            set => productName = value;
         }
 
         /// <summary>
@@ -72,8 +81,8 @@ namespace ProductInventoryTracker
 
             set
             {
-                if (value <= 0 || value > 1000)
-                    throw new ArgumentOutOfRangeException("Please provide a value that between 0 and 1000.");
+                if (value <= 0 || value > 100000)
+                    throw new ArgumentOutOfRangeException("Please provide a value that between 0 and 100000.");
 
                 this.price = value;
             }
@@ -86,8 +95,8 @@ namespace ProductInventoryTracker
 
             set
             {
-                if (value <= 0 || value > 1000)
-                    throw new ArgumentOutOfRangeException("Please provide a value that between 0 and 1000.");
+                if (value <= 0 || value > 100000)
+                    throw new ArgumentOutOfRangeException("Please provide a value that is between 0 and 100,000.");
 
                 this.quantity = value;
             }
