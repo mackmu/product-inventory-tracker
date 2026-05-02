@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
+
 
 namespace ProductInventoryTracker
 {
@@ -19,10 +21,18 @@ namespace ProductInventoryTracker
             inventoryService = new InventoryService();
         }
 
+        public void AddProduct(Product product)
+        {
+        }
+
+        public List<Product> GetAllProducts()
+        {
+            return inventoryService.GetProducts();
+        }
+
         public override string ToString()
         {
             return $"{ProductList.Count} Products and {SupplierList.Count} Suppliers";
         }
-
     }
 }

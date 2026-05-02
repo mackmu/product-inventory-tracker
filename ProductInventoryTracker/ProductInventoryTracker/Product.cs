@@ -54,8 +54,10 @@ namespace ProductInventoryTracker
             Quantity = quantity;
             this.productID = productID;
             this.categoryID = categoryID;
-            this.productName = productName;
+            this.Name = productName;
         }
+
+        public string Name { get => this.productName; set => this.productName = value; }
 
         /// <summary>
         /// Gets the subtotal calculation based on the product of price and quantity.
