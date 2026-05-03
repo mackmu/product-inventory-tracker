@@ -60,11 +60,7 @@ namespace ProductInventoryTracker
         }
 
         // Gets and sets the name of the product.
-        public string ProductName
-        {
-            get => productName;
-            set => productName = value;
-        }
+        public string ProductName { get => this.productName; set => this.productName = value; }
 
         /// <summary>
         /// Gets the subtotal calculation based on the product of price and quantity.

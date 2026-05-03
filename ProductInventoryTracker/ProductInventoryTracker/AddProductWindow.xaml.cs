@@ -35,7 +35,6 @@ namespace ProductInventoryTracker
             decimal.TryParse(txtPrice.Text, out decimal d1);
             int.TryParse(txtQuantity.Text, out int d2);
 
-
             // 3. Get the Subtotal property from the Product class.
             lblSubtotalDisplay.Text = (d1 * d2).ToString("C"); // (Show currency)
         }
@@ -50,7 +49,7 @@ namespace ProductInventoryTracker
             try
             {
                 // Instantiate a Product (uses placeholder CategoryID and SupplierID)
-                this.manager.CreateAndAddProduct(txtProductName.Text, decimal.Parse(txtPrice.Text), int.Parse(txtQuantity.Text), 1, 1);
+                this.manager.AddProduct(txtProductName.Text, decimal.Parse(txtPrice.Text), int.Parse(txtQuantity.Text), 1, 1);
 
                 // Add it to the Product list and show Success Message.
                 MessageBox.Show("Product saved successfully!");

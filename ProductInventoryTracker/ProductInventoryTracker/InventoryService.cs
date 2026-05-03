@@ -29,5 +29,35 @@ namespace ProductInventoryTracker
                 }
             }
         }
+
+        public List<Product> GetProducts()
+        {
+            var products = new List<Product>();
+
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM dbo.Products";
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var product = new Product(
+                                   (int)reader["ProductID"],
+                                   reader["ProductName"].ToString(),
+                                   (decimal)reader["Price"],
+                                   (int)reader["Quantity"],
+                                   (int)reader["CategoryID"],
+                                   (int)reader["SupplierID"]
+                                );
+                            products.Add(product);
+                        }
+                        return products;
+                    }
+                }
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
+
 
 namespace ProductInventoryTracker
 {
@@ -53,6 +55,5 @@ namespace ProductInventoryTracker
         {
             return $"{ProductList.Count} Products and {SupplierList.Count} Suppliers";
         }
-
     }
 }
