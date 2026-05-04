@@ -15,12 +15,12 @@ steps:
   displayName: 'Restore Nuget packages'
   inputs:
     command: 'restore'
-    restoreSolution: '**/ProductInventoryTracker.slnx'
+    restoreSolution: '**/ProductInventoryTracker/ProductInventoryTracker.csproj'
     feedsToUse: 'select'
 - task: MSBuild@1
   displayName: 'Build Test Library'
   inputs:
-    solution: '**/ProductInventoryTracker.slnx'
+    solution: '**/ProductInventoryTracker/ProductInventoryTracker.csproj'
     msbuildArchitecture: 'x64'
 - task: VSTest@3
   displayName: 'Run Unit Tests'
