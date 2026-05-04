@@ -22,12 +22,11 @@ steps:
   inputs:
     solution: 'ProductInventoryTracker/ProductInventoryTracker.Tests/ProductInventoryTracker.Tests.csproj'
     msbuildArchitecture: 'x64'
-- task: VSTest@3
+- task: DotNetCoreCLI@2
   displayName: 'Run Unit Tests'
   inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: '**/ProductInventoryTracker.Tests.dll'
-    searchFolder: '$(System.DefaultWorkingDirectory)'
+    command: 'test'
+    projects: 'ProductInventoryTracker/ProductInventoryTracker.Tests/ProductInventoryTracker.Tests.csproj'
 - task: MSBuild@1
   displayName: 'Build App'
   inputs:
