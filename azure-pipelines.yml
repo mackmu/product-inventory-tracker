@@ -26,7 +26,7 @@ steps:
   displayName: 'Run Unit Tests'
   inputs:
     testSelector: 'testAssemblies'
-    testAssemblyVer2: '**/ProductInventoryTracker.Tests.dll'
+    testAssemblyVer2: '**\*Tests.dll'
     searchFolder: '$(System.DefaultWorkingDirectory)'
 - task: MSBuild@1
   displayName: 'Build App'
@@ -36,7 +36,7 @@ steps:
 - task: ArchiveFiles@2
   displayName: 'Compress App'
   inputs:
-    rootFolderOrFile: '**/ProductInventoryTracker/bin/Debug'
+    rootFolderOrFile: '**/bin/Debug'
     includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
