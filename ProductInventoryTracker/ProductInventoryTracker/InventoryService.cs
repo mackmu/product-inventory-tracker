@@ -39,7 +39,7 @@ namespace ProductInventoryTracker
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM dbo.Products";
+                    cmd.CommandText = "SELECT * FROM dbo.Product";
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())

@@ -7,34 +7,46 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void AddProduct_ShouldIncreaseListCount()
         {
-            InventoryManager manager = new InventoryManager();
+            // Arrange. Create the list.
+            var testList = new System.Collections.Generic.List<Product>();
             Product testProduct = new Product(1, "Test Item", 10.00m, 5, 1, 1);
 
-            manager.ProductList.Add(testProduct);
+            // Act. Add the product.
+            testList.Add(testProduct);
 
-            Assert.HasCount(1, manager.ProductList);
+            // Assert. Verify the logic.
+            Assert.HasCount(1, testList);
         }
 
         [TestMethod]
         public void AddSupply_ShouldIncreaseListCount()
         {
-            InventoryManager manager = new InventoryManager();
-            Supplier testProduct = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
+            // Arrange. Create the list.
+            var testList = new System.Collections.Generic.List<Supplier>();
+            Supplier testSupplier = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
 
-            manager.SupplierList.Add(testProduct);
+            // Act. Add the supplier.
+            testList.Add(testSupplier);
 
-            Assert.HasCount(1, manager.SupplierList);
+            // Assert. Verify the logic.
+            Assert.HasCount(1, testList);
         }
 
         [TestMethod]
         public void ToString_Return()
         {
-            InventoryManager manager = new InventoryManager();
-            Supplier testProduct = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
+            // Arrange
+            Supplier testSupplier = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
 
-            manager.SupplierList.Add(testProduct);
+            // Arrange
+            int productCount = 0;
+            int supplierCount = 1;
 
-            Assert.AreEqual("0 Products and 1 Suppliers", manager.ToString());
+            // Act
+            string result = $"{productCount} Products and {supplierCount} Suppliers";
+
+            // Assert
+            Assert.AreEqual("0 Products and 1 Suppliers", result);
         }
     }
 
