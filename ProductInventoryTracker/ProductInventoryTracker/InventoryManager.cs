@@ -26,10 +26,10 @@ namespace ProductInventoryTracker
         /// </summary>
         public void AddProduct(string name, decimal price, int qty, int catId, int supId)
         {
+            Product newP = new Product(0, name, price, qty, catId, supId);
+
             // 1. Send it to SQL
             inventoryService.AddProduct(name, price, qty, catId, supId);
-
-            Product newP = new Product(0, name, price, qty, catId, supId);
 
             // Add to list
             this.ProductList.Add(newP);

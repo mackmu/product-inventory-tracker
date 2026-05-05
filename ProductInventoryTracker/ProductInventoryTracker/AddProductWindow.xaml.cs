@@ -55,7 +55,7 @@ namespace ProductInventoryTracker
                 MessageBox.Show("Product saved successfully!");
                 this.ResetProductForm();
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
