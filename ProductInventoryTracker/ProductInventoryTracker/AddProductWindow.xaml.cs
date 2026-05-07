@@ -15,10 +15,10 @@ namespace ProductInventoryTracker
     /// <summary>
     /// Interaction logic for ProductWindow.xaml
     /// </summary>
-    public partial class ProductWindow : Window
+    public partial class AddProductWindow : Window
     {
         private InventoryManager manager;
-        public ProductWindow(InventoryManager manager)
+        public AddProductWindow(InventoryManager manager)
         {
             InitializeComponent();
             this.manager = manager;
@@ -35,12 +35,8 @@ namespace ProductInventoryTracker
             decimal.TryParse(txtPrice.Text, out decimal d1);
             int.TryParse(txtQuantity.Text, out int d2);
 
-            // 2. Create the object.
-            Product myProduct = new Product(0, "Temp", d1, d2, 0);
-            this.manager.ProductList.Add(myProduct);
-
             // 3. Get the Subtotal property from the Product class.
-            lblSubtotalDisplay.Text = myProduct.Subtotal.ToString("C"); // (Show currency)
+            lblSubtotalDisplay.Text = (d1 * d2).ToString("C"); // (Show currency)
         }
 
         /// <summary>
@@ -52,15 +48,14 @@ namespace ProductInventoryTracker
         {
             try
             {
-                // Instantiate a temporary Product.
-                Product tempProduct = new Product(0, txtProductName.Text, decimal.Parse(txtPrice.Text), int.Parse(txtQuantity.Text), 0);
+                // Instantiate a Product (uses placeholder CategoryID and SupplierID)
+                this.manager.AddProduct(txtProductName.Text, decimal.Parse(txtPrice.Text), int.Parse(txtQuantity.Text), 1, 1);
 
                 // Add it to the Product list and show Success Message.
-                this.manager.ProductList.Add(tempProduct);
                 MessageBox.Show("Product saved successfully!");
                 this.ResetProductForm();
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

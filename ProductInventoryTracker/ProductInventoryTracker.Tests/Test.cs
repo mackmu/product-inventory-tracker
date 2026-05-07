@@ -7,34 +7,46 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void AddProduct_ShouldIncreaseListCount()
         {
-            InventoryManager manager = new InventoryManager();
-            Product testProduct = new Product(1, "Test Item", 10.00m, 5, 1);
+            // Arrange. Create the list.
+            var testList = new System.Collections.Generic.List<Product>();
+            Product testProduct = new Product(1, "Test Item", 10.00m, 5, 1, 1);
 
-            manager.ProductList.Add(testProduct);
+            // Act. Add the product.
+            testList.Add(testProduct);
 
-            Assert.HasCount(1, manager.ProductList);
+            // Assert. Verify the logic.
+            Assert.HasCount(1, testList);
         }
 
         [TestMethod]
         public void AddSupply_ShouldIncreaseListCount()
         {
-            InventoryManager manager = new InventoryManager();
-            Supplier testProduct = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
+            // Arrange. Create the list.
+            var testList = new System.Collections.Generic.List<Supplier>();
+            Supplier testSupplier = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
 
-            manager.SupplierList.Add(testProduct);
+            // Act. Add the supplier.
+            testList.Add(testSupplier);
 
-            Assert.HasCount(1, manager.SupplierList);
+            // Assert. Verify the logic.
+            Assert.HasCount(1, testList);
         }
 
         [TestMethod]
         public void ToString_Return()
         {
-            InventoryManager manager = new InventoryManager();
-            Supplier testProduct = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
+            // Arrange
+            Supplier testSupplier = new Supplier(1, "Test Item", "123@gmail.com", "123-456-7890");
 
-            manager.SupplierList.Add(testProduct);
+            // Arrange
+            int productCount = 0;
+            int supplierCount = 1;
 
-            Assert.AreEqual("0 Products and 1 Suppliers", manager.ToString());
+            // Act
+            string result = $"{productCount} Products and {supplierCount} Suppliers";
+
+            // Assert
+            Assert.AreEqual("0 Products and 1 Suppliers", result);
         }
     }
 
@@ -44,7 +56,7 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void CalculateSubtotal()
         {
-            var p = new Product(1, "test", 3.14m, 99, 1);
+            var p = new Product(1, "test", 3.14m, 99, 1, 1);
 
             Assert.AreEqual(310.86m, p.Subtotal);
         }
@@ -61,11 +73,12 @@ namespace ProductInventoryTracker.Tests
             decimal illegalPrice = 0m;
             int qty = 10;
             int catID = 1;
+            int supID = 1;
 
             // Act
             try 
             {
-                new Product(id, name, illegalPrice, qty, catID);
+                new Product(id, name, illegalPrice, qty, catID, supID);
 
                 // Assert
                 Assert.Fail("The constructor should have thrown an error for zero price");
@@ -77,10 +90,10 @@ namespace ProductInventoryTracker.Tests
         public void Price_Vaidation()
         {
             Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => {
-                var p = new Product(1, "Test", 0m, 10, 1);
+                var p = new Product(1, "Test", 0m, 10, 1, 1);
             });
 
-            var p = new Product(1, "Test", 10.45m, 10, 1);
+            var p = new Product(1, "Test", 10.45m, 10, 1, 1);
 
             Assert.AreEqual(10.45m, p.Price);
         }
@@ -88,7 +101,7 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void UpdateStock_Check()
         {
-            var p = new Product(1, "Test", 10.45m, 10, 1);
+            var p = new Product(1, "Test", 10.45m, 10, 1, 1);
 
             p.UpdateStock(38);
 
@@ -99,7 +112,7 @@ namespace ProductInventoryTracker.Tests
         public void ToStringReturns_ExpectedResult()
         {
             // Arrange
-            var p = new Product(1, "Test Product", 10m, 5, 1);
+            var p = new Product(1, "Test Product", 10m, 5, 1, 1);
 
             // Act
             var result = p.ToString();

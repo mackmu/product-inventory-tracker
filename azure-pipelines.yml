@@ -1,0 +1,48 @@
+# Starter pipeline
+
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: NuGetCommand@2
+  displayName: 'Restore Nuget packages'
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.csproj'
+    feedsToUse: 'select'
+- task: MSBuild@1
+  displayName: 'Build Test Library'
+  inputs:
+    solution: 'ProductInventoryTracker/ProductInventoryTracker.Tests/ProductInventoryTracker.Tests.csproj'
+    msbuildArchitecture: 'x64'
+- task: DotNetCoreCLI@2
+  displayName: 'Run Unit Tests'
+  inputs:
+    command: 'test'
+    projects: 'ProductInventoryTracker/ProductInventoryTracker.Tests/ProductInventoryTracker.Tests.csproj'
+- task: MSBuild@1
+  displayName: 'Build App'
+  inputs:
+    solution: 'ProductInventoryTracker/ProductInventoryTracker/ProductInventoryTracker.csproj'
+    msbuildArchitecture: 'x64'
+- task: ArchiveFiles@2
+  displayName: 'Compress App'
+  inputs:
+    rootFolderOrFile: 'ProductInventoryTracker/ProductInventoryTracker/bin'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

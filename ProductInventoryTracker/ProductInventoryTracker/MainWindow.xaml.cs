@@ -30,9 +30,9 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnProducts_Click(object sender, RoutedEventArgs e)
         {
-            ProductWindow pw = new ProductWindow(this.inventoryManager);
+            ProductManagementWindow pnw = new ProductManagementWindow(this.inventoryManager);
 
-            pw.ShowDialog();
+            pnw.ShowDialog();
         }
 
         /// <summary>
