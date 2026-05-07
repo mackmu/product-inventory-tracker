@@ -10,6 +10,22 @@ namespace ProductInventoryTracker
     {
         private string _connString = ConfigurationManager.ConnectionStrings["InventoryDb"].ConnectionString;
 
+        public void DeleteProduct(string productId)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM dbo.Product WHERE ProductID = @id";
+
+                    cmd.Parameters.AddWithValue("id", productId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public void AddProduct(string name, decimal price, int quantity, int categoryId, int supplierId)
         {
             using (var conn = new SqlConnection(this._connString))
