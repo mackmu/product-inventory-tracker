@@ -55,8 +55,25 @@ namespace ProductInventoryTracker
             Quantity = quantity;
             this.productID = productID;
             this.categoryID = categoryID;
-            this.productName = productName;
+            Name = productName;
             this.supplierID = supplierID;
+        }
+
+        public string Name
+        {
+            get => productName;
+
+            set
+            {
+                if (value == string.Empty)
+                {
+                    throw new FormatException("Product name cannot be empty.");
+                }
+                else
+                {
+                    productName = value;
+                }
+            }
         }
 
         // Gets and sets the name of the product.
