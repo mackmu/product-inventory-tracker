@@ -26,6 +26,38 @@ namespace ProductInventoryTracker
             }
         }
 
+        public List<Product> GetLowStockAlerts(int threshold)
+        {
+            var products = new List<Product>();
+
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    // Select products where the quantity is less than the threshold
+                    cmd.CommandText = "SELECT * FROM dbo.Product WHERE Quantity <= @threshold ORDER BY Quantity ASC";
+                    cmd.Parameters.AddWithValue("threshold", threshold);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            products.Add(new Product(
+                                (int)reader["ProductID"],
+                                reader["ProductName"].ToString(),
+                                (decimal)reader["Price"],
+                                (int)reader["Quantity"],
+                                (int)reader["CategoryID"],
+                                (int)reader["SupplierID"]
+                            ));
+                        }
+                    }
+                }
+            }
+            return products;
+        }
+
         public void UpdateProduct(int productId, string name, decimal price, int quantity, int categoryId, int supplierId)
         {
             using (var conn = new SqlConnection(this._connString))
