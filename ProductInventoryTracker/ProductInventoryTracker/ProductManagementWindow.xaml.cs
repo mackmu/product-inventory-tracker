@@ -42,13 +42,13 @@ namespace ProductInventoryTracker
         // Edit button
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            // to-do
         }
 
         // Delete button
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            // to-do
         }
     }
 }
