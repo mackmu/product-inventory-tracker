@@ -10,6 +10,82 @@ namespace ProductInventoryTracker
     {
         private string _connString = ConfigurationManager.ConnectionStrings["InventoryDb"].ConnectionString;
 
+        public void DeleteProduct(string productId)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM dbo.Product WHERE ProductID = @id";
+
+                    cmd.Parameters.AddWithValue("id", productId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public List<Product> GetLowStockAlerts(int threshold)
+        {
+            var products = new List<Product>();
+
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    // Select products where the quantity is less than the threshold
+                    cmd.CommandText = "SELECT * FROM dbo.Product WHERE Quantity <= @threshold ORDER BY Quantity ASC";
+                    cmd.Parameters.AddWithValue("threshold", threshold);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            products.Add(new Product(
+                                (int)reader["ProductID"],
+                                reader["ProductName"].ToString(),
+                                (decimal)reader["Price"],
+                                (int)reader["Quantity"],
+                                (int)reader["CategoryID"],
+                                (int)reader["SupplierID"]
+                            ));
+                        }
+                    }
+                }
+            }
+            return products;
+        }
+
+        public void UpdateProduct(int productId, string name, decimal price, int quantity, int categoryId, int supplierId)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE dbo.Product 
+                        SET ProductName = @name, 
+                            Price = @price, 
+                            Quantity = @qty, 
+                            CategoryID = @catId, 
+                            SupplierID = @supId 
+                        WHERE ProductID = @id";
+
+                    cmd.Parameters.AddWithValue("id", productId);
+                    cmd.Parameters.AddWithValue("name", name);
+                    cmd.Parameters.AddWithValue("price", price);
+                    cmd.Parameters.AddWithValue("qty", quantity);
+                    cmd.Parameters.AddWithValue("catId", categoryId);
+                    cmd.Parameters.AddWithValue("supId", supplierId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public void AddProduct(string name, decimal price, int quantity, int categoryId, int supplierId)
         {
             using (var conn = new SqlConnection(this._connString))
