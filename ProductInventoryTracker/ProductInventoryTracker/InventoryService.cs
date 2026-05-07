@@ -26,6 +26,34 @@ namespace ProductInventoryTracker
             }
         }
 
+        public void UpdateProduct(int productId, string name, decimal price, int quantity, int categoryId, int supplierId)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE dbo.Product 
+                        SET ProductName = @name, 
+                            Price = @price, 
+                            Quantity = @qty, 
+                            CategoryID = @catId, 
+                            SupplierID = @supId 
+                        WHERE ProductID = @id";
+
+                    cmd.Parameters.AddWithValue("id", productId);
+                    cmd.Parameters.AddWithValue("name", name);
+                    cmd.Parameters.AddWithValue("price", price);
+                    cmd.Parameters.AddWithValue("qty", quantity);
+                    cmd.Parameters.AddWithValue("catId", categoryId);
+                    cmd.Parameters.AddWithValue("supId", supplierId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public void AddProduct(string name, decimal price, int quantity, int categoryId, int supplierId)
         {
             using (var conn = new SqlConnection(this._connString))
