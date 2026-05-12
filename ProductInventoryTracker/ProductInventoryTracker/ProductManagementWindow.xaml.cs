@@ -48,7 +48,24 @@ namespace ProductInventoryTracker
         // Delete button
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            // to-do
+            // 1. Select product from DataGrid.
+            var selectedProduct = dgProducts.SelectedItem as Product;
+
+            if (selectedProduct != null)
+            {
+                // 2. Ask for user-confirmation first.
+                var result = MessageBox.Show($"Delete {selectedProduct.Name} permanently?", "Confirm", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    // 3. Call the Manager
+                    this.inventoryManager.DeleteProduct(selectedProduct);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to delete.");
+            }
         }
     }
 }

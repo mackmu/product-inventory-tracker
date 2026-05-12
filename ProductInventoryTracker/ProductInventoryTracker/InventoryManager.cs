@@ -51,6 +51,15 @@ namespace ProductInventoryTracker
             }
         }
 
+        public void DeleteProduct(Product productToDelete)
+        {
+            // 1. Send deletion request from UI to InventoryService file which handles DB connection and CRUD functions.
+            inventoryService.DeleteProduct(productToDelete.ProductID.ToString());
+
+            // 2. Remove from the local ObservableCollection so the UI refreshes
+            this.ProductList.Remove(productToDelete);
+        }
+
         public override string ToString()
         {
             return $"{ProductList.Count} Products and {SupplierList.Count} Suppliers";
