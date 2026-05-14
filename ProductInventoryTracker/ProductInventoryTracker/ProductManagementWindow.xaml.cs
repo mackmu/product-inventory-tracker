@@ -42,7 +42,21 @@ namespace ProductInventoryTracker
         // Edit button
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            // to-do
+            // 1. Grabs the product currently selected in the DataGrid.
+            var selectedProduct = dgProducts.SelectedItem as Product;
+
+            if (selectedProduct != null)
+            {
+                // 2. Passes the manager and the selected product to the window.
+                EditProductWindow pw = new EditProductWindow(this.inventoryManager, selectedProduct);
+
+                pw.ShowDialog();
+            }
+            else
+            {
+                // Message box if user clicks the Edit button without selecting an item on the list.
+                MessageBox.Show("Please select a product to edit first.");
+            }
         }
 
         // Delete button

@@ -7,12 +7,16 @@
         mc:Ignorable="d"
         Title="EditProductWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="554,282,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="96,43,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="134,135,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="254,135,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="374,135,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="494,135,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="555,249,0,0" VerticalAlignment="Top" Click="btnSaveProd_Click" Width="49" Height="26"/>
+        <Label Content="Edit product below" HorizontalAlignment="Left" Margin="96,43,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="134,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Margin="254,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtQty" HorizontalAlignment="Left" Margin="374,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Margin="494,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Product Name" HorizontalAlignment="Left" Margin="134,104,0,0" VerticalAlignment="Top"/>
+        <Label Content="Price" HorizontalAlignment="Left" Margin="254,104,0,0" VerticalAlignment="Top"/>
+        <Label Content="Quantity" HorizontalAlignment="Left" Margin="374,104,0,0" VerticalAlignment="Top"/>
+        <Label Content="Total" HorizontalAlignment="Left" Margin="494,104,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

@@ -64,6 +64,12 @@ namespace ProductInventoryTracker
             get => this.productID;
         }
 
+        /// <summary>
+        /// Gets a Category ID or Supplier ID from the product class.
+        /// </summary>
+        public int CategoryID { get => this.categoryID; }
+        public int SupplierID { get => this.supplierID; }
+
         public string Name
         {
             get => productName;

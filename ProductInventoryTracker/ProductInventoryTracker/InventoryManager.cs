@@ -64,5 +64,20 @@ namespace ProductInventoryTracker
         {
             return $"{ProductList.Count} Products and {SupplierList.Count} Suppliers";
         }
-    }
+        public void UpdateProduct(Product p)
+        {
+            // Call InventoryService to update SQL and update DB.
+            inventoryService.UpdateProduct(
+                p.ProductID,
+                p.Name,
+                p.Price,
+                p.Quantity,
+                p.CategoryID,
+                p.SupplierID
+            );
+
+            // 2. Force refresh from the DB so the UI sees the new values
+            this.GetAllProducts();
+        }
+    } 
 }
