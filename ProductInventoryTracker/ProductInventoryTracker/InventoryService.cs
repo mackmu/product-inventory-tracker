@@ -10,6 +10,23 @@ namespace ProductInventoryTracker
     {
         private string _connString = ConfigurationManager.ConnectionStrings["InventoryDb"].ConnectionString;
 
+        public int GetTotalProductCount()
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT SUM(Quantity) AS Total FROM dbo.Products";
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        return (int)reader["Total"];
+                    }
+                }
+            }
+        }
+
         public void DeleteProduct(string productId)
         {
             using (var conn = new SqlConnection(this._connString))
