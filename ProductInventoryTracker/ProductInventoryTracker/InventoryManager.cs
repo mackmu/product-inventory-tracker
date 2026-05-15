@@ -21,6 +21,11 @@ namespace ProductInventoryTracker
             inventoryService = new InventoryService();
         }
 
+        public int TotalProductCount()
+        {
+            return this.inventoryService.GetTotalProductCount();
+        }
+
         /// <summary>
         /// Create and add a product.
         /// </summary>

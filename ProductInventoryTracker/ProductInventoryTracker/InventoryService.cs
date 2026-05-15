@@ -17,12 +17,15 @@ namespace ProductInventoryTracker
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT SUM(Quantity) AS Total FROM dbo.Products";
+                    cmd.CommandText = "SELECT SUM(Quantity) AS Total FROM dbo.Product";
 
-                    using (var reader = cmd.ExecuteReader())
+                    var result = cmd.ExecuteScalar();
+                    if (result == null || result == DBNull.Value)
                     {
-                        return (int)reader["Total"];
+                        return 0;
                     }
+
+                    return Convert.ToInt32(result);
                 }
             }
         }
