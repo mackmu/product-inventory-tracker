@@ -13,11 +13,13 @@ namespace ProductInventoryTracker
 
         public ObservableCollection<Product> ProductList {  get; set; }
         public ObservableCollection<Supplier> SupplierList { get; set; }
+        public ObservableCollection<Category> CategoryList { get; set; }
 
         public InventoryManager()
         {
             ProductList = new ObservableCollection<Product>();
             SupplierList = new ObservableCollection<Supplier>();
+            CategoryList = new ObservableCollection<Category>();
             inventoryService = new InventoryService();
         }
 
@@ -78,6 +80,36 @@ namespace ProductInventoryTracker
 
             // 2. Force refresh from the DB so the UI sees the new values
             this.GetAllProducts();
+        }
+
+        // List of categories
+        public void LoadCategories()
+        {
+            // Clear old data for possible duplicates.
+            this.CategoryList.Clear();
+
+            var categories = inventoryService.GetCategories();
+
+            // Move the items into your ObservableCollection bucket
+            foreach (var cat in categories)
+            {
+                this.CategoryList.Add(cat);
+            }
+        }
+
+        // List of categories
+        public void LoadSuppliers()
+        {
+            // Clear old data for possible duplicates.
+            this.SupplierList.Clear();
+
+            var suppliers = inventoryService.GetSuppliers();
+
+            // Move the items into your ObservableCollection bucket
+            foreach (var sup in suppliers)
+            {
+                this.SupplierList.Add(sup);
+            }
         }
     } 
 }

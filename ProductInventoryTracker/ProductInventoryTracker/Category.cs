@@ -9,6 +9,16 @@ namespace ProductInventoryTracker
         private string _categoryName;
 
         /// <summary>
+        /// Category Constructor
+        /// </summary>
+        public Category(int categoryID, string categoryName)
+        {
+            this._categoryName = string.Empty;
+            this.CategoryID = categoryID;
+            this.CategoryName = categoryName;
+        }
+
+        /// <summary>
         /// Gets or initializes the ID of the category.
         /// </summary>
         public int CategoryID { get; init; }

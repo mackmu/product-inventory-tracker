@@ -22,6 +22,16 @@ namespace ProductInventoryTracker
         {
             InitializeComponent();
             this.manager = manager;
+
+            // 1. Load Categories and Suppliers in the window
+            this.manager.LoadCategories();
+            this.manager.LoadSuppliers();
+
+            // Supplier list dropdown selection data
+            cmbSupplier.ItemsSource = this.manager.SupplierList;
+
+            // Category list dropdown selection data
+            cmbCategory.ItemsSource = this.manager.CategoryList;
         }
 
         /// <summary>
@@ -48,8 +58,12 @@ namespace ProductInventoryTracker
         {
             try
             {
+                // Assign hidden database primary keys from the category and supplier dropdown menus.
+                int selectedCategory = (int)cmbCategory.SelectedValue;
+                int selectedSupplier = (int)cmbSupplier.SelectedValue;
+
                 // Instantiate a Product (uses placeholder CategoryID and SupplierID)
-                this.manager.AddProduct(txtProductName.Text, decimal.Parse(txtPrice.Text), int.Parse(txtQuantity.Text), 1, 1);
+                this.manager.AddProduct(txtProductName.Text, decimal.Parse(txtPrice.Text), int.Parse(txtQuantity.Text), selectedCategory, selectedSupplier);
 
                 // Add it to the Product list and show Success Message.
                 MessageBox.Show("Product saved successfully!");

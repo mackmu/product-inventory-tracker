@@ -62,7 +62,7 @@ namespace ProductInventoryTracker
                         {
                             products.Add(new Product(
                                 (int)reader["ProductID"],
-                                reader["ProductName"].ToString(),
+                                reader["ProductName"].ToString()!,
                                 (decimal)reader["Price"],
                                 (int)reader["Quantity"],
                                 (int)reader["CategoryID"],
@@ -139,7 +139,7 @@ namespace ProductInventoryTracker
                         {
                             var product = new Product(
                                    (int)reader["ProductID"],
-                                   reader["ProductName"].ToString(),
+                                   reader["ProductName"].ToString()!,
                                    (decimal)reader["Price"],
                                    (int)reader["Quantity"],
                                    (int)reader["CategoryID"],
@@ -151,6 +151,60 @@ namespace ProductInventoryTracker
                     }
                 }
             }
+        }
+        public List<Category> GetCategories()
+        {
+            var list = new List<Category>();
+            // Wrap connections in 'using' statements to prevent database memory leaks
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT CategoryID, CategoryName FROM dbo.Category";
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = (int)reader["CategoryID"];
+                            string name = reader["CategoryName"].ToString()!;
+
+                            // Uses your newly updated constructor!
+                            list.Add(new Category(id, name));
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+        public List<Supplier> GetSuppliers()
+        {
+            var list = new List<Supplier>();
+            // Wrap connections in 'using' statements to prevent database memory leaks
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT SupplierID, SupplierName, SupplierEmail, SupplierPhone FROM dbo.Supplier";
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = (int)reader["SupplierID"];
+                            string name = reader["SupplierName"].ToString()!;
+                            string email = reader["SupplierEmail"].ToString()!;
+                            string phone = reader["SupplierPhone"].ToString()!;
+
+                            // Uses your newly updated constructor!
+                            list.Add(new Supplier(id, name, email, phone));
+                        }
+                    }
+                }
+            }
+            return list;
         }
     }
 }
