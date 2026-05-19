@@ -65,23 +65,7 @@ namespace ProductInventoryTracker
 
         private void btnDeleteSupplier_Click(object sender, RoutedEventArgs e)
         {
-            // Select supplier to be deleted.
-            var selectedSupplier = dgSuppliers.SelectedItem as Supplier;
 
-            if (selectedSupplier != null)
-            {
-                // Confirm deletion message.
-                var result = MessageBox.Show($"Delete {selectedSupplier.SupplierName} permanently?", "Confirm Deletion", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    this.manager.DeleteSupplier(selectedSupplier);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a supplier from the list to delete.");
-            }
         }
     }
 }

@@ -178,6 +178,36 @@ namespace ProductInventoryTracker
             }
             return list;
         }
+
+        public void AddCategory(string name)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "INSERT INTO dbo.Category (CategoryName) VALUES (@name)";
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateCategory(int id, string name)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "UPDATE dbo.Category SET CategoryName = @name WHERE CategoryID = @id";
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public List<Supplier> GetSuppliers()
         {
             var list = new List<Supplier>();

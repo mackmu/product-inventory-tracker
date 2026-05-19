@@ -42,9 +42,9 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnCategories_Click(object sender, RoutedEventArgs e)
         {
-            CategoryWindow cw = new CategoryWindow();
+            CategoryManagementWindow cmw = new CategoryManagementWindow(this.inventoryManager);
+            cmw.ShowDialog();
 
-            cw.ShowDialog();
         }
 
         /// <summary>

@@ -17,9 +17,28 @@ namespace ProductInventoryTracker
     /// </summary>
     public partial class CategoryWindow : Window
     {
-        public CategoryWindow()
+        private InventoryManager manager;
+
+        // Constructor Overload for 'add' a category.
+        public CategoryWindow(InventoryManager manager)
         {
             InitializeComponent();
+            this.manager = manager;
+        }
+
+        // Constructor Overload for 'edit' a category.
+        public CategoryWindow(InventoryManager manager, Category categoryToEdit)
+        {
+            InitializeComponent();
+            this.manager = manager;
+
+            // Pre-fill form fields
+            this.Title = "Edit Category";
+            txtCategoryName.Text = categoryToEdit.CategoryName;
+
+            // Stash database ID key on the save button
+            btnAddCategory.Content = "Save";
+            btnAddCategory.Tag = categoryToEdit.CategoryID;
         }
 
         /// <summary>
@@ -29,9 +48,27 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnAddCategory_Click(object sender, RoutedEventArgs e)
         {
-            // Success message for 'Add' a category button.
-            MessageBox.Show("Category added successfully!");
-            this.ResetProductForm();
+            // Validation
+            if (string.IsNullOrWhiteSpace(txtCategoryName.Text))
+            {
+                MessageBox.Show("Error: Category Name cannot be blank.");
+                return;
+            }
+
+            // Check if we are Editing vs Adding
+            if (btnAddCategory.Tag != null)
+            {
+                int existingID = (int)btnAddCategory.Tag;
+                this.manager.UpdateCategory(existingID, txtCategoryName.Text);
+                MessageBox.Show("Category updated successfully!");
+            }
+            else
+            {
+                this.manager.AddCategory(txtCategoryName.Text);
+                MessageBox.Show("Category added successfully!");
+            }
+
+            this.Close();
         }
 
         /// <summary>
