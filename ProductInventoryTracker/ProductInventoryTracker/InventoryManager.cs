@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Collections.ObjectModel;
+using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.Data.SqlClient;
 
 
 namespace ProductInventoryTracker
@@ -105,11 +106,29 @@ namespace ProductInventoryTracker
 
             var suppliers = inventoryService.GetSuppliers();
 
-            // Move the items into your ObservableCollection bucket
+            // Move the items into the ObservableCollection bucket
             foreach (var sup in suppliers)
             {
                 this.SupplierList.Add(sup);
             }
+        }
+
+        // Add Supplier to DB
+        public void AddSupplier(string name, string email, string phone)
+        {
+            inventoryService.AddSupplier(name, email, phone);
+        }
+
+        public void UpdateSupplier(int id, string name, string email, string phone)
+        {
+            inventoryService.UpdateSupplier(id, name, email, phone);
+            this.LoadSuppliers();
+        }
+
+        public void DeleteSupplier(Supplier supplierToDelete)
+        {
+            inventoryService.DeleteSupplier(supplierToDelete.SupplierID);
+            this.SupplierList.Remove(supplierToDelete);
         }
     } 
 }

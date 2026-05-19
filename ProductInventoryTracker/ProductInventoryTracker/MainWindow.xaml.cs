@@ -54,9 +54,9 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnSuppliers_Click(object sender, RoutedEventArgs e)
         {
-            SupplierWindow sw = new SupplierWindow(this.inventoryManager);
+            SupplierManagementWindow smw = new SupplierManagementWindow(this.inventoryManager);
 
-            sw.ShowDialog();
+            smw.ShowDialog();
         }
 
         /// <summary>

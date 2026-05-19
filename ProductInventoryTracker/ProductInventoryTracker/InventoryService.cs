@@ -206,5 +206,59 @@ namespace ProductInventoryTracker
             }
             return list;
         }
+
+        public void AddSupplier(string name, string email, string phone)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    // SQL parameterized statement to protect your database
+                    cmd.CommandText = "INSERT INTO dbo.Supplier (SupplierName, SupplierEmail, SupplierPhone) VALUES (@name, @email, @phone)";
+
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateSupplier(int id, string name, string email, string phone)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "UPDATE dbo.Supplier SET SupplierName = @name, SupplierEmail = @email, SupplierPhone = @phone WHERE SupplierID = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteSupplier(int id)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM dbo.Supplier WHERE SupplierID = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
