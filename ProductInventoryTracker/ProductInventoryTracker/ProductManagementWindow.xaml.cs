@@ -92,9 +92,33 @@ namespace ProductInventoryTracker
 
                 this.inventoryManager.UpdateProduct(product);
             }
-            catch (Exception)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("Please select a product to quick add to its quantity.");
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Max product quantity limit reached.");
+            }
+        }
+
+        private void btnQuickDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var product = (Product)this.dgProducts.SelectedItem;
+
+                product.Quantity -= 1;
+
+                this.inventoryManager.UpdateProduct(product);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Please select a product to quick delete to its quantity.");
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Cannot have less than 1 quantity of a product.");
             }
         }
     }
