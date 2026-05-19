@@ -81,5 +81,21 @@ namespace ProductInventoryTracker
                 MessageBox.Show("Please select a product to delete.");
             }
         }
+
+        private void btnQuickAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var product = (Product)this.dgProducts.SelectedItem;
+
+                product.Quantity += 1;
+
+                this.inventoryManager.UpdateProduct(product);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please select a product to quick add to its quantity.");
+            }
+        }
     }
 }
