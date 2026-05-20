@@ -128,7 +128,7 @@ namespace ProductInventoryTracker.Tests
         [TestMethod]
         public void GetCategoryName()
         {
-            var category = new Category { CategoryID = 1123, CategoryName = "Cars" };
+            var category = new Category(1123, "Cars");
 
             Assert.AreEqual("Cars", category.CategoryName);
         }
