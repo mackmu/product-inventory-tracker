@@ -30,7 +30,6 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
             <Button x:Name="btnAddSupplier" Content="Add" Width="100" Height="30" Margin="5,0,5,0" Click="btnAddSupplier_Click"/>
             <Button x:Name="btnEditSupplier" Content="Edit" Width="100" Height="30" Margin="5,0,5,0" Click="btnEditSupplier_Click"/>
-            <Button x:Name="btnDeleteSupplier" Content="Delete" Width="100" Height="30" Margin="5,0,5,0" Click="btnDeleteSupplier_Click"/>
         </StackPanel>
     </Grid>
 </Window>

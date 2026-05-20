@@ -108,6 +108,19 @@ namespace ProductInventoryTracker
             }
         }
 
+        // Adds a category
+        public void AddCategory(string name)
+        {
+            inventoryService.AddCategory(name);
+        }
+
+        // Update a category
+        public void UpdateCategory(int id, string name)
+        {
+            inventoryService.UpdateCategory(id, name);
+            this.LoadCategories();
+        }
+
         // List of categories
         public void LoadSuppliers()
         {
