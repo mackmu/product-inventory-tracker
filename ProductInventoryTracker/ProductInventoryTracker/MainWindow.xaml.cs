@@ -22,6 +22,7 @@ namespace ProductInventoryTracker
             InitializeComponent();
             this.inventoryManager = new InventoryManager();
             this.tProductsLabel.Content = this.inventoryManager.TotalProductCount();
+            this.tValueLabel.Content = this.inventoryManager.TotalInventoryValue();
         }
 
         /// <summary>

@@ -29,6 +29,11 @@ namespace ProductInventoryTracker
             return this.inventoryService.GetTotalProductCount();
         }
 
+        public decimal TotalInventoryValue()
+        {
+            return this.inventoryService.GetTotalInventoryValue();
+        }
+
         /// <summary>
         /// Create and add a product.
         /// </summary>

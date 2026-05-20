@@ -18,5 +18,8 @@
         </StackPanel>
         <Label Content="Total Products:" HorizontalAlignment="Left" Margin="199,309,0,0" VerticalAlignment="Top"/>
         <Label x:Name="tProductsLabel" Content="0" HorizontalAlignment="Left" Margin="292,309,0,0" VerticalAlignment="Top"/>
+        <Label Content="Total Value:" HorizontalAlignment="Left" Margin="199,329,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="tValueLabel" Content="0" HorizontalAlignment="Left" Margin="292,329,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
