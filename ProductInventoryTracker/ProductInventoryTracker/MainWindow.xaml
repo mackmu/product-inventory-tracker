@@ -16,5 +16,7 @@
             <Button x:Name="btnCategories" Content="Categories" Width="120" Margin="10,0" Click="btnCategories_Click"/>
             <Button x:Name="btnSuppliers" Content="Suppliers" Width="120" Margin="10,0" Click="btnSuppliers_Click"/>
         </StackPanel>
+        <Label Content="Total Products:" HorizontalAlignment="Left" Margin="199,309,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="tProductsLabel" Content="0" HorizontalAlignment="Left" Margin="292,309,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
