@@ -30,6 +30,26 @@ namespace ProductInventoryTracker
             }
         }
 
+        public decimal GetTotalInventoryValue()
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT Sum(Price) AS TotalValue FROM dbo.Product";
+
+                    var result = cmd.ExecuteScalar();
+                    if (result == null || result == DBNull.Value)
+                    {
+                        return 0;
+                    }
+
+                    return Convert.ToDecimal(result);
+                }
+            }
+        }
+
         public void DeleteProduct(string productId)
         {
             using (var conn = new SqlConnection(this._connString))
