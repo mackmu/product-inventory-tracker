@@ -15,13 +15,35 @@ namespace ProductInventoryTracker
     /// <summary>
     /// Interaction logic for SupplierWindow.xaml.
     /// </summary>
-    public partial class SupplierWindow : Window
+    public partial class AddSupplierWindow : Window
     {
         private InventoryManager manager;
-        public SupplierWindow(InventoryManager manager)
+
+        // First constructor to 'add' objects (Constructor Overload).
+        public AddSupplierWindow(InventoryManager manager)
         {
             InitializeComponent();
             this.manager = manager;
+
+        }
+
+        // Second constructor to 'edit' objects (Constructor Overload).
+        public AddSupplierWindow(InventoryManager manager, Supplier supplierToEdit)
+        {
+            InitializeComponent();
+            this.manager = manager;
+
+            // 1. Change window header text when editing
+            this.Title = "Edit Supplier";
+
+            // 2. Data text fields from form boxes.
+            txtSupplierName.Text = supplierToEdit.SupplierName;
+            txtSupplierEmail.Text = supplierToEdit.SupplierEmail;
+            txtSupplierPhone.Text = supplierToEdit.SupplierPhone;
+
+            // 3. Grabs the primary key ID on the Save button click.
+            btnSaveSupplier.Tag = supplierToEdit.SupplierID;
+
         }
 
         /// <summary>
@@ -31,19 +53,30 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnSaveSupplier_Click(object sender, RoutedEventArgs e)
         {
-            // Instantiate a temporary Supplier.
             Supplier tempSupplier = new Supplier(0, txtSupplierName.Text, txtSupplierEmail.Text, txtSupplierPhone.Text);
-            this.manager.SupplierList.Add(tempSupplier);
 
             if (tempSupplier.IsNameValid == true && tempSupplier.IsEmailValid == true && tempSupplier.IsPhoneValid == true)
             {
-                // Success Message.
-                MessageBox.Show("Supplier saved successfully!");
+                // Check if there is an ID from the Edit constructor.
+                if (btnSaveSupplier.Tag != null)
+                {
+                    int existingID = (int)btnSaveSupplier.Tag;
+
+                    this.manager.UpdateSupplier(existingID, txtSupplierName.Text, txtSupplierEmail.Text, txtSupplierPhone.Text);
+                    MessageBox.Show("Supplier updated successfully!");
+                }
+                else
+                {
+                    // 2. Otherwise, perform the normal Add process
+                    this.manager.AddSupplier(txtSupplierName.Text, txtSupplierEmail.Text, txtSupplierPhone.Text);
+                    MessageBox.Show("Supplier saved successfully!");
+                }
+
                 this.ResetSupplierForm();
+                this.Close();
             }
             else
             {
-                // Failure Message.
                 MessageBox.Show("Error: Supplier Name cannot be blank.");
             }
         }

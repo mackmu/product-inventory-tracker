@@ -59,6 +59,17 @@ namespace ProductInventoryTracker
             this.supplierID = supplierID;
         }
 
+        public int ProductID
+        {
+            get => this.productID;
+        }
+
+        /// <summary>
+        /// Gets a Category ID or Supplier ID from the product class.
+        /// </summary>
+        public int CategoryID { get => this.categoryID; }
+        public int SupplierID { get => this.supplierID; }
+
         public string Name
         {
             get => productName;
@@ -115,7 +126,7 @@ namespace ProductInventoryTracker
             }
         }
 
-        // Updates the product quanity
+        // Updates the product quantity
         public void UpdateStock(int amount)
         {
             this.Quantity += amount;

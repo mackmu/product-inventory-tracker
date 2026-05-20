@@ -42,13 +42,84 @@ namespace ProductInventoryTracker
         // Edit button
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            // to-do
+            // 1. Grabs the product currently selected in the DataGrid.
+            var selectedProduct = dgProducts.SelectedItem as Product;
+
+            if (selectedProduct != null)
+            {
+                // 2. Passes the manager and the selected product to the window.
+                EditProductWindow pw = new EditProductWindow(this.inventoryManager, selectedProduct);
+
+                pw.ShowDialog();
+            }
+            else
+            {
+                // Message box if user clicks the Edit button without selecting an item on the list.
+                MessageBox.Show("Please select a product to edit first.");
+            }
         }
 
         // Delete button
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            // to-do
+            // 1. Select product from DataGrid.
+            var selectedProduct = dgProducts.SelectedItem as Product;
+
+            if (selectedProduct != null)
+            {
+                // 2. Ask for user-confirmation first.
+                var result = MessageBox.Show($"Delete {selectedProduct.Name} permanently?", "Confirm", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    // 3. Call the Manager
+                    this.inventoryManager.DeleteProduct(selectedProduct);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to delete.");
+            }
+        }
+
+        private void btnQuickAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var product = (Product)this.dgProducts.SelectedItem;
+
+                product.Quantity += 1;
+
+                this.inventoryManager.UpdateProduct(product);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Please select a product to quick add to its quantity.");
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Max product quantity limit reached.");
+            }
+        }
+
+        private void btnQuickDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var product = (Product)this.dgProducts.SelectedItem;
+
+                product.Quantity -= 1;
+
+                this.inventoryManager.UpdateProduct(product);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Please select a product to quick delete to its quantity.");
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Cannot have less than 1 quantity of a product.");
+            }
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿<Window x:Class="ProductInventoryTracker.SupplierManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProductInventoryTracker"
+        mc:Ignorable="d"
+        Title="SupplierManagementWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Suppliers" FontSize="22" FontWeight="SemiBold" Margin="20,15,20,10"/>
+
+        <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="1" Margin="20,0,20,15">
+            <DataGrid x:Name="dgSuppliers" AutoGenerateColumns="False" IsReadOnly="True" BorderThickness="0" 
+                      RowBackground="White" AlternatingRowBackground="#F0F0F0" GridLinesVisibility="Horizontal" 
+                      HorizontalGridLinesBrush="LightGray" ColumnWidth="*">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Supplier Name" Binding="{Binding SupplierName}" Width="2*" />
+                    <DataGridTextColumn Header="Email" Binding="{Binding SupplierEmail}" Width="2*" />
+                    <DataGridTextColumn Header="Phone Number" Binding="{Binding SupplierPhone}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+            <Button x:Name="btnAddSupplier" Content="Add" Width="100" Height="30" Margin="5,0,5,0" Click="btnAddSupplier_Click"/>
+            <Button x:Name="btnEditSupplier" Content="Edit" Width="100" Height="30" Margin="5,0,5,0" Click="btnEditSupplier_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

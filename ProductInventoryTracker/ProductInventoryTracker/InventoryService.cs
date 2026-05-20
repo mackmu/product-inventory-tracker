@@ -10,6 +10,46 @@ namespace ProductInventoryTracker
     {
         private string _connString = ConfigurationManager.ConnectionStrings["InventoryDb"].ConnectionString;
 
+        public int GetTotalProductCount()
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT SUM(Quantity) AS Total FROM dbo.Product";
+
+                    var result = cmd.ExecuteScalar();
+                    if (result == null || result == DBNull.Value)
+                    {
+                        return 0;
+                    }
+
+                    return Convert.ToInt32(result);
+                }
+            }
+        }
+
+        public decimal GetTotalInventoryValue()
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT Sum(Price) AS TotalValue FROM dbo.Product";
+
+                    var result = cmd.ExecuteScalar();
+                    if (result == null || result == DBNull.Value)
+                    {
+                        return 0;
+                    }
+
+                    return Convert.ToDecimal(result);
+                }
+            }
+        }
+
         public void DeleteProduct(string productId)
         {
             using (var conn = new SqlConnection(this._connString))
@@ -45,7 +85,7 @@ namespace ProductInventoryTracker
                         {
                             products.Add(new Product(
                                 (int)reader["ProductID"],
-                                reader["ProductName"].ToString(),
+                                reader["ProductName"].ToString()!,
                                 (decimal)reader["Price"],
                                 (int)reader["Quantity"],
                                 (int)reader["CategoryID"],
@@ -122,7 +162,7 @@ namespace ProductInventoryTracker
                         {
                             var product = new Product(
                                    (int)reader["ProductID"],
-                                   reader["ProductName"].ToString(),
+                                   reader["ProductName"].ToString()!,
                                    (decimal)reader["Price"],
                                    (int)reader["Quantity"],
                                    (int)reader["CategoryID"],
@@ -132,6 +172,144 @@ namespace ProductInventoryTracker
                         }
                         return products;
                     }
+                }
+            }
+        }
+        public List<Category> GetCategories()
+        {
+            var list = new List<Category>();
+            // Wrap connections in 'using' statements to prevent database memory leaks
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT CategoryID, CategoryName FROM dbo.Category";
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = (int)reader["CategoryID"];
+                            string name = reader["CategoryName"].ToString()!;
+
+                            // Uses your newly updated constructor!
+                            list.Add(new Category(id, name));
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+
+        public void AddCategory(string name)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "INSERT INTO dbo.Category (CategoryName) VALUES (@name)";
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateCategory(int id, string name)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "UPDATE dbo.Category SET CategoryName = @name WHERE CategoryID = @id";
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public List<Supplier> GetSuppliers()
+        {
+            var list = new List<Supplier>();
+            // Wrap connections in 'using' statements to prevent database memory leaks
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT SupplierID, SupplierName, SupplierEmail, SupplierPhone FROM dbo.Supplier";
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = (int)reader["SupplierID"];
+                            string name = reader["SupplierName"].ToString()!;
+                            string email = reader["SupplierEmail"].ToString()!;
+                            string phone = reader["SupplierPhone"].ToString()!;
+
+                            // Uses your newly updated constructor!
+                            list.Add(new Supplier(id, name, email, phone));
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+
+        public void AddSupplier(string name, string email, string phone)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    // SQL parameterized statement to protect your database
+                    cmd.CommandText = "INSERT INTO dbo.Supplier (SupplierName, SupplierEmail, SupplierPhone) VALUES (@name, @email, @phone)";
+
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateSupplier(int id, string name, string email, string phone)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "UPDATE dbo.Supplier SET SupplierName = @name, SupplierEmail = @email, SupplierPhone = @phone WHERE SupplierID = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteSupplier(int id)
+        {
+            using (var conn = new SqlConnection(this._connString))
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM dbo.Supplier WHERE SupplierID = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

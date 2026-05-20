@@ -21,6 +21,8 @@ namespace ProductInventoryTracker
         {
             InitializeComponent();
             this.inventoryManager = new InventoryManager();
+            this.tProductsLabel.Content = this.inventoryManager.TotalProductCount();
+            this.tValueLabel.Content = this.inventoryManager.TotalInventoryValue();
         }
 
         /// <summary>
@@ -42,9 +44,9 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnCategories_Click(object sender, RoutedEventArgs e)
         {
-            CategoryWindow cw = new CategoryWindow();
+            CategoryManagementWindow cmw = new CategoryManagementWindow(this.inventoryManager);
+            cmw.ShowDialog();
 
-            cw.ShowDialog();
         }
 
         /// <summary>
@@ -54,9 +56,9 @@ namespace ProductInventoryTracker
         /// <param name="e">The event data.</param>
         private void btnSuppliers_Click(object sender, RoutedEventArgs e)
         {
-            SupplierWindow sw = new SupplierWindow(this.inventoryManager);
+            SupplierManagementWindow smw = new SupplierManagementWindow(this.inventoryManager);
 
-            sw.ShowDialog();
+            smw.ShowDialog();
         }
 
         /// <summary>
