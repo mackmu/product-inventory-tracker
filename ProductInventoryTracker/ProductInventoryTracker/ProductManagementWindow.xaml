@@ -32,6 +32,8 @@
             <Button x:Name="btnAdd" Content="Add" Width="100" Margin="5,0" Click="btnAdd_Click"/>
             <Button x:Name="btnEdit" Content="Edit" Width="100" Margin="5,0" Click="btnEdit_Click"/>
             <Button x:Name="btnDelete" Content="Delete" Width="100" Margin="5,0" Click="btnDelete_Click"/>
+            <Button x:Name="btnQuickAdd" Content="+1 Qty" Width="60" Margin="5,0" Click="btnQuickAdd_Click"></Button>
+            <Button x:Name="btnQuickDelete" Content="-1 Qty" Width="60" Margin="5,0" Click="btnQuickDelete_Click"/>
         </StackPanel>
     </Grid>
 </Window>
