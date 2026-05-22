@@ -119,7 +119,7 @@ namespace ProductInventoryTracker
 
             set
             {
-                if (value <= 0 || value > 100000)
+                if (value < 0 || value > 100000)
                     throw new ArgumentOutOfRangeException("Please provide a value that is between 0 and 100,000.");
 
                 this.quantity = value;
