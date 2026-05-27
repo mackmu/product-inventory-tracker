@@ -2,7 +2,7 @@
 
 A collaborative, multi-tier product inventory management platform built with C# and the .NET ecosystem. The system features an architectural focus on strict security parameters, robust CRUD operations, decoupled data layers, and an automated Azure DevOps CI/CD deployment pipeline.
 
-## ⚙️ Core Technology Stack
+## Core Technology Stack
 
 * **Backend Framework:** .NET / C#
 * **Database Management:** SQL Server / SQL Server Management Studio (SSMS)
@@ -12,22 +12,22 @@ A collaborative, multi-tier product inventory management platform built with C# 
 
 ---
 
-## 🏗️ Architectural Decisions & Engineering
+## Architectural Decisions & Engineering
 
 To ensure long-term maintainability, testability, and scalability, this application abandons tightly coupled architectures in favor of solid design principles:
 
-### 🔹 The Repository Pattern
+### The Repository Pattern
 Data access logic is completely decoupled from the core business layer. By introducing an abstraction layer between the database queries and application controllers, the database engine can be swapped or unit-tested using mock repositories without breaking consumer endpoints.
 
-### 🔹 Database Constraints & Integrity
+### Database Constraints & Integrity
 The underlying SQL Server layer enforces strict data validation. Quantity management logic balances state transitions carefully, preventing invalid entry states (such as negative stock values) and handling edge-case validation gracefully at the application boundary.
 
-### 🔹 Production CI/CD Pipeline
+### Production CI/CD Pipeline
 Every code integration automatically triggers the built-in Azure DevOps engine. The integrated `azure-pipelines.yml` script compiles the solution, executes the automated test suites using `dotnet test`, and validates building blocks before deployment targets are reached.
 
 ---
 
-## 🛠️ Collaborative Workflow & Git Hygiene
+## Collaborative Workflow & Git Hygiene
 
 This repository serves as a model for collaborative enterprise standards:
 * **Linear Branching Hierarchy:** Features and bug fixes are developed on isolated tracks (`feature/`, `cleanup/`) before passing through an upstream merge chain from `Dev` ➔ `Test` ➔ `main`.
@@ -35,7 +35,7 @@ This repository serves as a model for collaborative enterprise standards:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 * .NET SDK
@@ -45,3 +45,14 @@ This repository serves as a model for collaborative enterprise standards:
 1. Clone the repository:
    ```bash
    git clone https://github.com/mackmu/product-inventory-tracker.git
+
+2. Navigate into the root project directory:
+   ```bash
+   cd product-inventory-tracker
+
+3. Build the solution and restore dependencies: 
+   dotnet build
+
+4. Run the application layer:
+   dotnet run --project ProductInventoryTracker
+   
